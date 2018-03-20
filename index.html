@@ -9,11 +9,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <script src="assets/javascript/logic.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+    <script src="assets/javascript/logic.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
 
@@ -34,7 +33,7 @@
                 <div class="col s12 m12">
                   <div class="card">
                     <div class="card-image">
-                      <img src="images/sample-1.jpg">
+                      <img src="#">
                       <span class="card-title">Card Title</span>
                     </div>
                     <div class="card-content">
@@ -58,6 +57,18 @@
                     </div>
                   </nav>
     </header>
+    <div class='main'>
+      <div class='container'>
+        <div id="input">
+            <label for="zip-code">Zip Code</label>
+            <input placeholder="Enter a zipcode here!" id="zip-code" type="text" class="validate">
+            <a id="search-button" class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>Submit</a>
+          </div>
+        <div id="beer-api">
+          <!-- inject jQuery stuff -->
+        </div>
+      </div>
+    </div>
 </body>
 
 
