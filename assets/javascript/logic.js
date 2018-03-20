@@ -18,8 +18,10 @@ $(document).ready(function() {
         method: 'GET'
       }).done(function(beer) {
         var beerList = beer.data;
+        console.log(beer)
         beer.forEach(function(brewery) {
-          console.log(brewery.name)
+          console.log(brewery.name, brewery.street, brewery.state, brewery.zip, brewery.phone);
+
         })
       })
     });
