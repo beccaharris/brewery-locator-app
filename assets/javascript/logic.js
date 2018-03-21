@@ -10,18 +10,27 @@ $(document).ready(function() {
   // Cycle through array on 30 second timer
     var userInput;
     $('#search-button').on('click', function(event) {
-      userInput = $('#zip-code').val().trim();
+      userInput = $('#city-search').val().trim();
+      $('#beer-table > tbody').empty();
       console.log(userInput)
       var queryUrl = 'https://thingproxy.freeboard.io/fetch/http://beermapping.com/webservice/loccity/E3b1372b6db3c5e549e795a11ed77331/' + userInput + '&s=json'
       $.ajax({
         url: queryUrl,
         method: 'GET'
       }).done(function(beer) {
+        console.log(queryUrl)
         var beerList = beer.data;
         console.log(beer)
         beer.forEach(function(brewery) {
           console.log(brewery.name, brewery.street, brewery.state, brewery.zip, brewery.phone);
-
+          $('#beer-table > tbody').append(
+            '<tr>' +
+              '<td>' + brewery.name + '</td>' +
+              '<td>' + brewery.street + '</td>' +
+              '<td>' + brewery.city + '</td>' +
+              '<td>' + brewery.state + '</td>' +
+            '<tr>'
+          )
         })
       })
     });
