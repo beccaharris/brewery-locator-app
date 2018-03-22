@@ -30,7 +30,16 @@
         <div class="card">
           <div class="card-image">
             <img src="assets/images/cheers.jpg" alt="A cheers to beers!">
-              <span class="card-title">Search</span>
+
+            <span class="card-title">
+              
+              <div class="file-field input-field">
+                <a id="search-button" class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>Submit</a>
+                <div class="file-path-wrapper">
+                  <input placeholder="Enter a city here!" id="city-search" type="text" class="validate">
+                </div>
+              </div>
+            </span>     
           </div>
         </div>
       </div>
@@ -54,11 +63,7 @@
   </header>
     <div class='main'>
       <div class='container'>
-        <div id="input">
-            <label for="city-search">City</label>
-            <input placeholder="Enter a city here!" id="city-search" type="text" class="validate">
-            <a id="search-button" class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>Submit</a>
-          </div>
+
         <div>
           <table id='beer-table' class='highlight responsive-table'>
             <thead>

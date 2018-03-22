@@ -8,6 +8,12 @@ $(document).ready(function() {
   // Append beerFacets to .beer-facts
 
   // Cycle through array on 30 second timer
+
+
+    var array1 = []
+    var array2 = []
+    var array3 = []
+
     var userInput;
     $('#search-button').on('click', function(event) {
       userInput = $('#city-search').val().trim();

@@ -2,7 +2,38 @@
   padding: 0;
   margin-top: -1.75%;
   margin-bottom: -35px;
+  width: 100%
 }
 .map-me {
   cursor: pointer;
+}
+.card-title {
+  width: 70%;
+  background-color: white; 
+  padding: 0 !important;
+  margin-left: 15%;
+  margin-right: 15%;
+  color: black
+}
+#search-button {
+  float: right;
+  margin: 0;
+  height: 65px;
+  padding-top: 10px;
+}
+.file-path-wrapper {
+  padding-left: 0;
+}
+.file-field, .input-field {
+  margin: 0;
+}
+#city-search {
+  margin-bottom: 0;
+  color: black;
+}
+.header {
+  background-color: transparent
+}
+.beer-header {
+  color: black;
 }
