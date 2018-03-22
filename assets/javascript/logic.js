@@ -1,14 +1,43 @@
 $(document).ready(function() {
-  console.log( 'ready!' );
   var beerFacts = [
     {fact: 'Beer is made with hops!'},
-    {fact: 'Your mamma has three titties: one for beer, one for water, and the third one says "OUT OF ORDER"'}
-  ]
-  console.log(beerFacts);
+    {fact: 'Your mamma has three titties: one for milk, one for beer, and the third one says "OUT OF ORDER"'}
+  ];
   // Append beerFacets to .beer-facts
-
-  // Cycle through array on 30 second timer
+  beerFacts.forEach(fact => {
+    // Append one fact for 30 seconds
+    
   });
+
+  function factRotation(i) {
+    if(i < beerFacts.length) {
+      setTimeout(function() {
+        console.log(beerFacts[i])
+        var newFact = $("<p>");
+        $('#beer-facts').empty();
+        $('#beer-facts').append(newFact);
+        newFact.text(beerFacts[i].fact);
+        factRotation(i + 1);
+      }, 3000);
+    }
+  }
+
+  factRotation(0);
+  
+  // for (let i = 0; i < beerFacts.length; i++) {
+  //   setDelay(i)
+  // };
+
+  // function setDelay(whichIndex) {
+  //   setTimeout(() => {
+  //     console.log(beerFacts[whichIndex])
+  //     var newFact = $("<p>")
+  //     $('#beer-facts').append(newFact);
+  //     newFact.text(beerFacts[whichIndex].fact);
+  //   }, 3000);
+
+  // }
+  // $('#beer-facts').remove();
 
   var userInput;
   $('#search-button').on('click', function(event) {
@@ -23,4 +52,7 @@ $(document).ready(function() {
     console.log(queryUrl)
     console.log(beer)
   })
+
+  
+  });
 });
