@@ -13,6 +13,8 @@ $(document).ready(function() {
     {fact: "The world's largest beer festival is Oktoberfest. Held annually in Munich, Germany, it is a 16-day funfair running from late September to the first weekend in October with more than 6 million people from around the world attending the event every year."}
   ];
 
+  var fact = beerFacts[Math.floor(Math.random() * beerFacts.length)].fact
+  $('#beer-facts').append("<p>" + fact)
 
   function factRotation(i) {
     if(i < beerFacts.length) {
@@ -23,11 +25,14 @@ $(document).ready(function() {
         $('#beer-facts').append(newFact);
         newFact.text(beerFacts[i].fact);
         factRotation(i + 1);
-      }, 15000);
-    }
-  }
+        if (i === 11) {
+          i = 0
+        };
+      }, 3000);
+    };
+  };
 
-  factRotation(0);
+  factRotation(Math.floor(Math.random() * beerFacts.length));
 
   var userInput;
   $('#search-button').on('click', function(event) {
@@ -41,7 +46,7 @@ $(document).ready(function() {
     var beerList = beer.data;
     console.log(queryUrl)
     console.log(beer)
-  })
+  });
 
   
   });
