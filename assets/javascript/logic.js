@@ -25,6 +25,7 @@ $(document).ready(function() {
           console.log(brewery.name, brewery.street, brewery.state, brewery.zip, brewery.phone);
           $('#beer-table > tbody').append(
             '<tr>' +
+              '<td><a class="map-me">Map Me!' +
               '<td>' + brewery.name + '</td>' +
               '<td>' + brewery.street + '</td>' +
               '<td>' + brewery.city + '</td>' +

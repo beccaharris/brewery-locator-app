@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
     <script src="assets/javascript/logic.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.2/pagination.css"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </head>
 <body>
@@ -60,9 +61,10 @@
             <a id="search-button" class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>Submit</a>
           </div>
         <div>
-          <table id='beer-table' class='striped responsive-table pagination'>
+          <table id='beer-table' class='highlight responsive-table'>
             <thead>
               <tr>
+                <th></th>
                 <th>Brewery Name</th>
                 <th>Street Address</th>
                 <th>City</th>
