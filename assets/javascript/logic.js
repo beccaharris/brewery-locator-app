@@ -24,11 +24,40 @@ $(document).ready(function() {
         url: queryUrl,
         method: 'GET'
       }).done(function(beer) {
-        console.log(queryUrl)
-        var beerList = beer.data;
-        console.log(beer)
-        beer.forEach(function(brewery) {
-          console.log(brewery.name, brewery.street, brewery.state, brewery.zip, brewery.phone);
+        var beerList = beer;
+        console.log(beer.length);
+        console.log(beerList);
+
+        var arrayOfArrays = [];
+
+        var numberOf10ElementArrays = beerList.length / 10; // How many pages of 10 items you can get from the response
+
+        for (let i = 0; i < numberOf10ElementArrays; i++) {
+          let array = [];
+          console.log('-----------------------------')
+          for (let j = 0; j < 10; j++) {
+            console.log(beerList[j]);
+            if (beerList[j]) {
+              array.push(beerList[j]);
+              beerList.splice(j, 1);
+            }
+          }
+          arrayOfArrays.push(array);
+        }
+        
+        console.log(arrayOfArrays);
+
+      arrayOfArrays.forEach((array, index) => {
+        var numIndicator = $(`<button class="pagination-btn" data-index=${index}>${index}</button>`);
+        // want to empty the page divs // 
+        $('body').append(numIndicator);
+      });
+
+      $('body').on('click', '.pagination-btn', function() {
+        var whichButton = ($(this).data('index'));
+        console.log(arrayOfArrays[whichButton]);
+        $('#beer-table > tbody').empty();
+        arrayOfArrays[whichButton].forEach(function(brewery) {
           $('#beer-table > tbody').append(
             '<tr>' +
               '<td><a class="map-me">Map Me!' +
@@ -37,7 +66,21 @@ $(document).ready(function() {
               '<td>' + brewery.city + '</td>' +
               '<td>' + brewery.state + '</td>' +
             '<tr>'
-          )
+          );
+        });
+      });
+      
+
+        arrayOfArrays[0].forEach(brewery => {
+          $('#beer-table > tbody').append(
+            '<tr>' +
+              '<td><a class="map-me">Map Me!' +
+              '<td>' + brewery.name + '</td>' +
+              '<td>' + brewery.street + '</td>' +
+              '<td>' + brewery.city + '</td>' +
+              '<td>' + brewery.state + '</td>' +
+            '<tr>'
+          );
         })
       })
     });
