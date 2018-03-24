@@ -10,7 +10,14 @@ $(document).ready(function() {
     {fact: 'The most beer-drinking country in the world is the Czech Republic. With an incredible per capita beer consumption of almost 40 gallons a year, the Czechs are way out in front in the beer drinking world league table.'},
     {fact: 'Old Vikings believed that in their heaven called Valhalla, there is a giant goat whose udders provided unlimited supply of beer.'},
     {fact: 'Cenosillicaphobia is the fear of an empty beer glass.'},
-    {fact: "The world's largest beer festival is Oktoberfest. Held annually in Munich, Germany, it is a 16-day funfair running from late September to the first weekend in October with more than 6 million people from around the world attending the event every year."}
+    {fact: "The world's largest beer festival is Oktoberfest. Held annually in Munich, Germany, it is a 16-day funfair running from late September to the first weekend in October with more than 6 million people from around the world attending the event every year."},
+    {fact: "Craft Beer is good for your bones! Beer has high levels of silicon, which promotes strong bones."},
+    {fact: "Frosty glasses will cause your beer to foam."},
+    {fact: "The first professional brewers were women."},
+    {fact: "According to a diary entry from a passenger on the Mayflower, the pilgrims made their landing at Plymouth Rock, rather than continue to their destination in Virginia, due to lack of beer."},
+    {fact: 'Coined in the early 1900s, the word "alcoholiday" means leisure time spent drinking.'},
+    {fact: "The Code of Hammurabi decreed that bartenders who watered down beer would be executed."},
+    {fact: "J.K. Rowling invented Quidditch in a pub."}
   ];
 
   var fact = beerFacts[Math.floor(Math.random() * beerFacts.length)].fact
@@ -24,11 +31,11 @@ $(document).ready(function() {
         $('#beer-facts').empty();
         $('#beer-facts').append(newFact);
         newFact.text(beerFacts[i].fact);
-        factRotation(i + 1);
-        if (i === 11) {
+        if (i === 17) {
           i = 0
-        };
-      }, 3000);
+        }
+        factRotation(i + 1);
+      }, 10000);
     };
   };
 
