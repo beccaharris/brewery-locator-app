@@ -74,12 +74,7 @@ $(document).ready(function () {
     var comment = childSnapshot.val().newComment;
 
     console.log(name);
-    // name: name,
-    //age: age,
-    //comment: comment
-    //});
-    //});
-    //push collected data up 
+  
 
     // Firebase watcher + initial loader HINT: .on("value")
     database.ref().on("value", function (snapshot) {
@@ -89,13 +84,10 @@ $(document).ready(function () {
       console.log(snapshot.val().age);
       console.log(snapshot.val().comment);
 
-      // Change the HTML to reflect
-      // $("#name-display").text(snapshot.val().name);
-      // $("#age-display").text(snapshot.val().age);
-      // $("#comment-display").text(snapshot.val().comment);
+  
 
 
-      $('#input-comments > tbody').append('<tr><td>' + name + '<tr><td>' + age + '<tr><td>' + comment + '<tr><td>')
+      $('#input-comments > tbody').append('<tr><td>' + name + age + comment + '<tr><td>')
 
     });
   });

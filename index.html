@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,108 +10,121 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/javascript/logic.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    
-</head>    
+
+</head>
+
 <body>
-  <header>
-    <div class="navbar-fixed">
-      <nav>
-        <div class="nav-wrapper">
-          <a href="#!" class="brand-logo">Logo</a>
-          <ul class="right hide-on-med-and-down">
-            <li><a href="sass.html">Sass</a></li>
-            <li><a href="badges.html">Components</a></li>
-          </ul>
+    <header>
+        <div class="navbar-fixed">
+            <nav>
+                <div class="nav-wrapper">
+                    <a href="#!" class="brand-logo">Logo</a>
+                    <ul class="right hide-on-med-and-down">
+                        <li>
+                            <a href="sass.html">Sass</a>
+                        </li>
+                        <li>
+                            <a href="badges.html">Components</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         </div>
-      </nav>
-    </div>
-    <div class="row">
-      <div class="col s12 m12" id="cheers">
-        <div class="card">
-          <div class="card-image">
-            <img src="assets/images/cheers.jpg" alt="A cheers to beers!">
-              <span class="card-title">Search</span>
-          </div>
+        <div class="row">
+            <div class="col s12 m12" id="cheers">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="assets/images/cheers.jpg" alt="A cheers to beers!">
+                        <span class="card-title">Search</span>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <nav>
-      <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Logo</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="sass.html">Sass</a></li>
-          <li><a href="badges.html">Components</a></li>
-          <li><a href="collapsible.html">JavaScript</a></li>
-        </ul>
-      </div>
-    </nav>
-    <div class="card-content">
-      <div class="beer-facts">
-        <p>RANDOM BEER FACTS HERE</p>
-        <!-- Random beer facts -->
-      </div>
-    </div>
-  </header>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">Logo</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li>
+                        <a href="sass.html">Sass</a>
+                    </li>
+                    <li>
+                        <a href="badges.html">Components</a>
+                    </li>
+                    <li>
+                        <a href="collapsible.html">JavaScript</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="card-content">
+            <div class="beer-facts">
+                <p>RANDOM BEER FACTS HERE</p>
+                <!-- Random beer facts -->
+            </div>
+        </div>
+    </header>
     <div class='main'>
-      <div class='container'>
-        <div id="input">
-            <label for="zip-code">Zip Code</label>
-            <input placeholder="Enter a zipcode here!" id="zip-code" type="text" class="validate">
-            <a id="search-button" class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>Submit</a>
-          </div>
-        <div id="beer-api">
-          <!-- inject jQuery stuff -->
+        <div class='container'>
+            <div id="input">
+                <label for="zip-code">Zip Code</label>
+                <input placeholder="Enter a zipcode here!" id="zip-code" type="text" class="validate">
+                <a id="search-button" class="waves-effect waves-light btn">
+                    <i class="material-icons right">cloud</i>Submit</a>
+            </div>
+            <div id="beer-api">
+                <!-- inject jQuery stuff -->
+            </div>
+            <br>
+            <!-- table for comment section  -->
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s3">
+                            <input placeholder="Type Name" id="name" type="text" class="validate">
+                            <label for="name">Enter Name</label>
+                        </div>
+                        <div class="input-field col s2">
+                            <input placeholder="Age" id="age" type="text" class="validate">
+                            <label for="age">Enter Age</label>
+                        </div>
+                        <div class="input-field col s7">
+                            <input placeholder="Add Comment" id="comment" type="text" class="validate">
+                            <label for="Comment">Comment</label>
+                        </div>
+                        <div id="submit" class="waves-effect waves-light btn">Submit</div>
+
+
+                        <table id="input-comments" class="striped">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Age</th>
+                                    <th>Comment</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+            </div>
         </div>
-        <br>
-         <!-- table for comment section  -->
-         <div class="row">
-            <form class="col s12">
-              <div class="row">
-                <div class="input-field col s3">
-                  <input placeholder="Type Name" id="name" type="text" class="validate">
-                  <label for="name">Enter Name</label>
-            </div>
-            <div class="input-field col s2">
-                  <input placeholder="Age" id="age" type="text" class="validate">
-                  <label for="age">Enter Age</label>
-            </div>
-            <div class="input-field col s7">
-                    <input placeholder= "Add Comment" id="comment" type="text" class="validate">
-                    <label for="Comment">Comment</label>
-            </div>
-    <div id="submit" class="waves-effect waves-light btn">Submit</div>
-
-
-                  <table id="input-comments" class="striped">
-                    <thead>
-                      <tr>
-                          <th>Name</th>
-                          <th>Age</th>
-                          <th>Comment</th>
-                      </tr>
-                    </thead>
-            
-                    <tbody>
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                      
-                    </tbody>
-                  </table>
-
-                  </div>
-                
-              </div>
-      </div>
     </div>
 
-   
-    
-    
+
+
+
 </body>
+
 </html>
