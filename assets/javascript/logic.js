@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
   var beerFacts = [
     {fact: 'At any given time, 0.7% of the world is drunk. So 50 million people are drunk right now.'},
@@ -35,20 +34,79 @@ $(document).ready(function() {
 
   factRotation(Math.floor(Math.random() * beerFacts.length));
 
+// =========================================================== //
+// ====================== BEERMAPPING ======================== //
+// =========================================================== //
   var userInput;
-  $('#search-button').on('click', function (event) {
-    userInput = $('#zip-code').val().trim();
-    console.log(userInput)
-    var queryUrl = 'https://cors-anywhere.herokuapp.com/http://beermapping.com/webservice/loccity/E3b1372b6db3c5e549e795a11ed77331/' + userInput
+  
+  $('#search-button').on('click', function(event) {
+    userInput = $('#city-search').val().trim();
+    $('#beer-table > tbody').empty();
+    var queryUrl = 'https://thingproxy.freeboard.io/fetch/http://beermapping.com/webservice/loccity/E3b1372b6db3c5e549e795a11ed77331/' + userInput + '&s=json'
     $.ajax({
       url: queryUrl,
-      method: 'GET'
-    }).done(function (beer) {
-      var beerList = beer.data;
-      console.log(queryUrl)
-      console.log(beer)
-    })
-  });
+      method: 'GET',
+      success: function(obj, textstatus) {
+        if ($.fn.DataTable.isDataTable("#beer-table")) {
+          $('#beer-table').DataTable().clear().destroy();
+        }
+        $('#beer-table').DataTable({
+          data: obj,
+          columns: [
+            {data: 'id'},
+            {data: 'name'},
+            {data: 'status'},
+            {data: 'reviewlink'},
+            {data: 'proxylink'},
+            {data: 'blogmap'},
+            {data: 'street'},
+            {data: 'city'},
+            {data: 'state'},
+            {data: 'zip'},
+            {data: 'country'},
+            {data: 'phone'},
+            {data: 'url'},
+            {data: 'overall'},
+            {data: 'imagecount'}
+          ],
+          "columnDefs" : [
+            {
+              "targets": [0],
+              "visible": false
+            },{
+              "targets": [2],
+              "visible": false
+            },{
+              "targets": [3],
+              "visible": false
+            },{
+              "targets": [4],
+              "visible": false
+            },{
+              "targets": [5],
+              "visible": false
+            },{
+              "targets": [10],
+              "visible": false
+            },{
+              "targets": [11],
+              "visible": false
+            },{
+              "targets": [12],
+              "visible": false
+            },{
+              "targets": [13],
+              "visible": false
+            },{
+              "targets": [14],
+              "visible": false
+            }
+          ]
+        })
+      }
+    }) 
+  })
+});
 
   // Initialize Firebase
   var config = {
@@ -117,4 +175,3 @@ $(document).ready(function() {
     });
   });
 });
-

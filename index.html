@@ -8,10 +8,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Brewery Locator</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> 
     <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     <script src="assets/javascript/logic.js"></script>
@@ -37,6 +40,24 @@
                 </div>
             </nav>
         </div>
+      </nav>
+    </div>
+    <div class="row">
+      <div class="col s12 m12" id="cheers">
+        <div class="card">
+          <div class="card-image">
+            <img src="assets/images/cheers.jpg" alt="A cheers to beers!">
+
+            <span class="card-title">
+              
+              <div class="file-field input-field">
+                <a id="search-button" class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>Submit</a>
+                <div class="file-path-wrapper">
+                  <input placeholder="Enter a city here!" id="city-search" type="text" class="validate">
+                </div>
+              </div>
+            </span>     
+          </div>
         <div class="row">
             <div class="col s12 m12" id="cheers">
                 <div class="card">
@@ -47,6 +68,7 @@
                 </div>
             </div>
         </div>
+          
         <nav>
             <div class="nav-wrapper">
                 <a href="#" class="brand-logo">Logo</a>
@@ -71,17 +93,35 @@
         </div>
     </header>
     <div class='main'>
-        <div class='container'>
-            <div id="input">
-                <label for="zip-code">Zip Code</label>
-                <input placeholder="Enter a zipcode here!" id="zip-code" type="text" class="validate">
-                <a id="search-button" class="waves-effect waves-light btn">
-                    <i class="material-icons right">cloud</i>Submit</a>
-            </div>
-            <div id="beer-api">
-                <!-- inject jQuery stuff -->
-            </div>
-            <br>
+
+      <div class='container'>
+
+        <div>
+          <table id='beer-table' class='highlight responsive-table'>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Brewery Name</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>Street Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- inject jQuery stuff -->
+            </tbody>
+          </table>
+
             <!-- table for comment section  -->
             <div class="row">
                 <form class="col s12">
