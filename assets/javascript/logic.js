@@ -170,6 +170,12 @@ $(document).ready(function() {
   
 
 
+<<<<<<< HEAD
       $('#input-comments > tbody').append('<tr><td>' + name + age + comment + '<tr><td>')
+=======
+      $('#input-comments > tbody').append(`<tr><td>${name}</td><td>${age}</td><td>${comment}</td></tr>`)
+
+    });
+>>>>>>> 1a748f3cdaaf12a149b45596f839b5e53c5af718
   });
 });
