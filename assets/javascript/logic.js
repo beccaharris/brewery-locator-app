@@ -112,7 +112,7 @@ $(document).ready(function() {
   
 
 
-      $('#input-comments > tbody').append('<tr><td>' + name + age + comment + '<tr><td>')
+      $('#input-comments > tbody').append(`<tr><td>${name}</td><td>${age}</td><td>${comment}</td></tr>`)
 
     });
   });
