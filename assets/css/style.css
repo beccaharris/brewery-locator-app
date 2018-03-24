@@ -4,6 +4,11 @@
   margin-bottom: -35px;
 }
 
+#map {
+  height: 400px;
+  width: 800px;
+  margin: 0 auto;
+  margin-bottom: 60px;
 .nav-wrapper {
   background-color: #B22222;
 }

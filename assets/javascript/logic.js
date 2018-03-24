@@ -46,6 +46,11 @@ $(document).ready(function() {
     var beerList = beer.data;
     console.log(queryUrl)
     console.log(beer)
+  })
+});
+
+
+
   });
 
   

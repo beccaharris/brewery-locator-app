@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -14,6 +16,7 @@
     <script src="assets/javascript/logic.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </head>
+
 <body>
   <header>
     <div class="navbar-fixed">
@@ -21,8 +24,12 @@
         <div class="nav-wrapper">
           <a href="#!" class="brand-logo">Logo</a>
           <ul class="right hide-on-med-and-down">
-            <li><a href="sass.html">Sass</a></li>
-            <li><a href="badges.html">Components</a></li>
+            <li>
+              <a href="sass.html">Sass</a>
+            </li>
+            <li>
+              <a href="badges.html">Components</a>
+            </li>
           </ul>
         </div>
       </nav>
@@ -32,7 +39,7 @@
         <div class="card">
           <div class="card-image">
             <img src="assets/images/cheers.jpg" alt="A cheers to beers!">
-              <span class="card-title">Search</span>
+            <span class="card-title">Search</span>
           </div>
         </div>
       </div>
@@ -41,9 +48,15 @@
       <div class="nav-wrapper">
         <a href="#" class="brand-logo">Logo</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="sass.html">Sass</a></li>
-          <li><a href="badges.html">Components</a></li>
-          <li><a href="collapsible.html">JavaScript</a></li>
+          <li>
+            <a href="sass.html">Sass</a>
+          </li>
+          <li>
+            <a href="badges.html">Components</a>
+          </li>
+          <li>
+            <a href="collapsible.html">JavaScript</a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -53,17 +66,46 @@
       </div>
     </div>
   </header>
-    <div class='main'>
-      <div class='container'>
-        <div id="input">
-            <label for="zip-code">Zip Code</label>
-            <input placeholder="Enter a zipcode here!" id="zip-code" type="text" class="validate">
-            <a id="search-button" class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>Submit</a>
-          </div>
-        <div id="beer-api">
-          <!-- inject jQuery stuff -->
-        </div>
+  <div class='main'>
+    <div class='container'>
+      <div id="input">
+        <label for="zip-code">Zip Code</label>
+        <input placeholder="Enter a zipcode here!" id="zip-code" type="text" class="validate">
+        <a id="search-button" class="waves-effect waves-light btn">
+          <i class="material-icons right">cloud</i>Submit</a>
+      </div>
+      <div id="beer-api">
+        <!-- inject jQuery stuff -->
       </div>
     </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <div id="map">
+  
+  </div>
+
+  <script>
+      function initMap() {
+        var location = {lat: 39.742043, lng: -104.991531};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: location
+        });
+        var marker = new google.maps.Marker({
+          position: location,
+          map: map
+        });
+      }
+      
+    </script>
+    <script async defer src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD05drdGt8PJ_HeqPeupTCof649sOQpNiI&callback=initMap">
+     </script>
+
+
+  
 </body>
+
 </html>
+
