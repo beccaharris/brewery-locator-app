@@ -171,7 +171,5 @@ $(document).ready(function() {
 
 
       $('#input-comments > tbody').append('<tr><td>' + name + age + comment + '<tr><td>')
-
-    });
   });
 });
