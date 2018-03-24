@@ -106,8 +106,6 @@ $(document).ready(function() {
       }
     }) 
   })
-});
-
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyDdqCYrEn0pxKLfqlxBy1YDaPJfJyT10ZQ",
@@ -158,7 +156,6 @@ $(document).ready(function() {
 
     console.log(name);
   
-
     // Firebase watcher + initial loader HINT: .on("value")
     database.ref().on("value", function (snapshot) {
       // Log everything that's coming out of snapshot
@@ -167,9 +164,12 @@ $(document).ready(function() {
       console.log(snapshot.val().age);
       console.log(snapshot.val().comment);
 
-  
+      $('#input-comments > tbody').append(`<tr><td>${name}</td><td>${age}</td><td>${comment}</td></tr>`)
 
-
-      $('#input-comments > tbody').append('<tr><td>' + name + age + comment + '<tr><td>')
+    });
   });
+
+
 });
+
+  

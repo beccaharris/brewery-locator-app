@@ -7,18 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Brewery Locator</title>
+  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
   <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-  <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
   <script src="assets/javascript/logic.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
 
 </head>
 
@@ -117,12 +115,13 @@
         <div class="row">
           <form class="col s12">
             <div class="row">
+
               <div class="input-field col s3">
                 <input placeholder="Type Name" id="name" type="text" class="validate">
                 <label for="name">Enter Name</label>
               </div>
               <div class="input-field col s2">
-                <input placeholder="Age" id="age" type="text" class="validate">
+                <input placeholder="Age" id="age" type="number" max="150" min="21" class="validate">
                 <label for="age">Enter Age</label>
               </div>
               <div class="input-field col s7">
@@ -151,6 +150,7 @@
                 </tbody>
               </table>
 
+
             </div>
 
         </div>
@@ -166,6 +166,7 @@
     </div>
 
     <script>
+
       function initMap() {
         var location = { lat: 39.742043, lng: -104.991531 };
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -181,6 +182,7 @@
 
 
 <script async defer src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD05drdGt8PJ_HeqPeupTCof649sOQpNiI&callback=initMap"></script>
+
 
 
 </body>
