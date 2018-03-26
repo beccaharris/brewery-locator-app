@@ -1,96 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 
 <head>
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
   <title>Brewery Locator</title>
-  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-  <script src="assets/javascript/logic.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-
-
+  <link rel='icon' href='assets/images/favicon.ico' type='image/x-icon'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css'>
+  <link rel='stylesheet' href='https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css'>
+  <link rel='stylesheet' type='text/css' href='assets/css/style.css'>
+  <script src='https://www.gstatic.com/firebasejs/4.11.0/firebase.js'></script>
+  <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+  <script type='text/javascript' src='https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js'></script>
+  <script src='assets/javascript/logic.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js'></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD05drdGt8PJ_HeqPeupTCof649sOQpNiI&callback=initMap"></script>
 </head>
 
 <body>
 
+  <!-- Start implementing Foundation - replace Materialize -->
   <header>
-    <div class="navbar-fixed">
-      <nav>
-        <div class="nav-wrapper">
-          <a href="#!" class="brand-logo">Logo</a>
-          <ul class="right hide-on-med-and-down">
-            <li>
-              <a href="sass.html">Sass</a>
-            </li>
-            <li>
-              <a href="badges.html">Components</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+    <div data-sticky-container>
+      <div class='top-bar'>
+        <h2>App Title/Logo Goes here</h2>
+      </div>
     </div>
-    </nav>
+    <h3>Enter a city here and find yourself some beer!</h3>
+    <div class='input-group'>
+      <input class='input-group-field' id='city-search' placeholder='Enter a city name here' type='text'>
+      <div class='input-group-button'>
+        <input type='submit' class='button' id='search-button' value='Find me beer!'>
+      </div>
     </div>
-    <div class="row">
-      <div class="col s12 m12" id="cheers">
-        <div class="card">
-          <div class="card-image">
-            <img src="assets/images/cheers.jpg" alt="A cheers to beers!">
-
-            <span class="card-title">
-
-              <div class="file-field input-field">
-                <a id="search-button" class="waves-effect waves-light btn">
-                  <i class="material-icons right">cloud</i>Submit</a>
-                <div class="file-path-wrapper">
-                  <input placeholder="Enter a city here!" id="city-search" type="text" class="validate">
-                </div>
-              </div>
-            </span>
-          </div>
-
-          <nav>
-            <div class="nav-wrapper">
-              <a href="#" class="brand-logo">Logo</a>
-              <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li>
-                  <a href="sass.html">Sass</a>
-                </li>
-                <li>
-                  <a href="badges.html">Components</a>
-                </li>
-                <li>
-                  <a href="collapsible.html">JavaScript</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-          <div class="card-content">
-            <div id="beer-facts">
-              <!-- Random beer facts -->
-            </div>
-          </div>
+    <div data-sticky-container>
+      <div class='top-bar'>
+        <marquee id='beer-facts'>
+          <!-- Inject jQuery beer facts here -->
+        </marquee>
+      </div>
+    </div>
   </header>
-  <div class='main'>
 
-    <div class='container'>
-
-      <div>
+  <div class='grid-container'>
+    <div class='grid-x'>
+      <div class='cell medium-12 small-12'>
+        <!-- Begin BeerMapping results table -->
         <table id='beer-table' class='highlight responsive-table'>
           <thead>
             <tr>
               <th></th>
               <th>Brewery Name</th>
+              <th></th>
               <th></th>
               <th></th>
               <th></th>
@@ -103,89 +65,151 @@
               <th></th>
               <th></th>
               <th></th>
-              <th></th>
             </tr>
           </thead>
           <tbody>
-            <!-- inject jQuery stuff -->
+            <!-- Call BeerMapping API and inject jQuery here -->
           </tbody>
         </table>
-        <br><br>
-
-        <!-- table for comment section  -->
-        <div class="row">
-          <form class="col s12">
-            <div class="row">
-
-              <div class="input-field col s3">
-                <input placeholder="Type Name" id="name" type="text" class="validate">
-                <label for="name">Enter Name</label>
-              </div>
-              <div class="input-field col s2">
-                <input placeholder="Age" id="age" type="number" max="150" min="21" class="validate">
-                <label for="age">Enter Age</label>
-              </div>
-              <div class="input-field col s7">
-                <input placeholder="Add Comment" id="comment" type="text" class="validate">
-                <label for="Comment">Comment</label>
-              </div>
-              <div id="submit" class="waves-effect waves-light btn">Submit</div>
-
-
-              <table id="input-comments" class="striped">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Comment</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-
-                </tbody>
-              </table>
-
-
+      </div>
+      <!-- End BeerMapping results table, begin actual Google Map -->
+      <div class='cell medium-12 small-12'>
+        <div id="map">
+          <!--Google Map show here -->
+        </div>
+      </div>
+      <!-- End Google Map, begin comments section -->
+      <div class='cell medium-12 small-12'>
+        <form data-abide novalidate>
+          <div data-abide-error class='alert callout' style='display: none'>
+            <p>
+              <i class='fi-alert'></i> There are some errors in your form.</p>
+          </div>
+          <div class='row'>
+            <div class='small-12 medium-12 columns'>
+              <label>Name
+                <input type='text' placeholder='Type Name' id='name' aria-describedby="exampleHelpText" required>
+                <span class='form-error'>
+                  You should fill this field out...it's required.
+                </span>
+              </label>
+              <p class='help-text' id='exampleHelpText'>Here's how you use this input field...</p>
             </div>
+            <div class='small-12 medium-12 columns'>
+              <label>Age
+                <input type='text' placeholder='1234' id='age' min='21' aria-describedby="exampleHelpText" required pattern='number'>
+                <span class='form-error'>
+                  You should fill this field out...it's required. Also, this number must be above 21!
+                </span>
+              </label>
+              <p class='help-text' id='exampleHelpText'>Here's how you use this input field...</p>
+            </div>
+            <div class='small-12 medium-12 columns'>
+              <label>Comment
+                <textarea placeholder='Type your comment here!' id='comment' aria-describedby="exampleHelpText" required></textarea>
+                <span class='form-error'>
+                  You should fill this field out...it's required.
+                </span>
+              </label>
+              <p class='help-text' id='exampleHelpText'>Here's how you use this input field...</p>
+            </div>
+            <div class="row">
+              <fieldset class="large-6 columns">
+                <button class="button" id='submit' type="submit" value="Submit">Submit</button>
+              </fieldset>
+            </div>
+          </div>
+        </form>
+      </div>
+
+
+
+
+    </div>
+  </div>
+  <!-- End Foundation and begin Materialize -->
+  <div>
+
+    <!-- table for comment section  -->
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+
+          <table id="input-comments" class="striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Comment</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+
+            </tbody>
+          </table>
+
 
         </div>
+
+    </div>
+  </div>
+  </div>
+
+  <div class="grid-x grid-padding-x">
+      <div class="cell">
+        <h2>Abide Demo</h2>
+        <p>These input types create a text field: <code>text</code>, <code>date</code>, <code>datetime</code>, <code>datetime-local</code>, <code>email</code>, <code>month</code>, <code>number</code>, <code>password</code>, <code>search</code>, <code>tel</code>,
+          <code>time</code>, <code>url</code>, and <code>week</code>. Note the use of the novalidate attribute to disable any browser validation that could conflict with Abide.</p>
+        <form data-abide novalidate>
+          <div data-abide-error class="alert callout" style="display: none;">
+            <p><i class="fi-alert"></i> There are some errors in your form.</p>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="small-12 cell">
+              <label>Number Required
+            <input type="text" placeholder="1234" aria-describedby="exampleHelpText" required pattern="number">
+            <span class="form-error">
+              Yo, you had better fill this out, it's required.
+            </span>
+          </label>
+              <p class="help-text" id="exampleHelpText">Here's how you use this input field!</p>
+            </div>
+          </div>
+
+
+          </div>
+          <div class="grid-x grid-padding-x">
+            <fieldset class="large-6 cell">
+              <button class="button" type="submit" value="Submit">Submit</button>
+            </fieldset>
+            <fieldset class="large-6 cell">
+              <button class="button" type="reset" value="Reset">Reset</button>
+            </fieldset>
+          </div>
+        </form>
       </div>
     </div>
 
 
-    <br>
-    <br>
-    <br>
-    <div id="map">
-
-    </div>
-
-    <script>
-
-      function initMap() {
-        var location = { lat: 39.742043, lng: -104.991531 };
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 10,
-          center: location
-        });
-        var marker = new google.maps.Marker({
-          position: location,
-          map: map
-        });
-      }
-    </script>
-
-
-<script async defer src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD05drdGt8PJ_HeqPeupTCof649sOQpNiI&callback=initMap"></script>
-
-
+  <script>
+    function initMap() {
+    var location = { lat: 39.742043, lng: -104.991531 };
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 10,
+      center: location
+    });
+    var marker = new google.maps.Marker({
+      position: location,
+      map: map
+    });
+  }
+  </script>
 
 </body>
-
 </html>
