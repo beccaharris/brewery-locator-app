@@ -5,7 +5,7 @@ body {
 header {
   position: relative;
   background-image: url('../images/cheers.jpg');
-  background-image: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 100%), url(../images/cheers.jpg);
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.4) 100%), url(../images/cheers.jpg);
 }
 .input-group {
   margin-right: 15% ;
@@ -36,10 +36,6 @@ p {
   margin-bottom: 0;
 }
 /* End Foundation Styling */
-
-.map-me {
-  cursor: pointer;
-}
 
 #map {
   height: 400px;

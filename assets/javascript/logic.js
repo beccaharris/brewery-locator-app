@@ -9,7 +9,7 @@ $(document).ready(function() {
     {fact: 'Amsterdam pays alcoholics in beer. For cleaning the city streets, local alcoholics get 10 Euros, half a packet of rolling tobacco, and 5 beers as payment by a government-funded organization.'},
     {fact: 'In 1814, almost 400,000 gallons of beer flooded several streets in London after a huge vat ruptured in the parish of St. Giles.'},
     {fact: "Beer commercials in the US aren't really allowed to show people actually drinking the beer. It's a US law that people cannot actually be shown consuming an alcoholic beverage on television."},
-    {fact: 'The world´s strongest beer is Brewmeister´s "Snake Venom“. While regular beer usually have about 5% ABV, this Scottish killer has a stomach-burning 67,5% ABV.'},
+    {fact: 'The world´s strongest beer is Brewmeister´s "Snake Venom". While regular beer usually have about 5% ABV, this Scottish killer has a stomach-burning 67.5% ABV.'},
     {fact: 'The most beer-drinking country in the world is the Czech Republic. With an incredible per capita beer consumption of almost 40 gallons a year, the Czechs are way out in front in the beer drinking world league table.'},
     {fact: 'Old Vikings believed that in their heaven called Valhalla, there is a giant goat whose udders provided unlimited supply of beer.'},
     {fact: 'Cenosillicaphobia is the fear of an empty beer glass.'},
@@ -29,7 +29,6 @@ $(document).ready(function() {
   function factRotation(i) {
     if(i < beerFacts.length) {
       setTimeout(function() {
-        console.log(beerFacts[i])
         var newFact = $("<p>");
         $('#beer-facts').empty();
         $('#beer-facts').append(newFact);
@@ -47,14 +46,9 @@ $(document).ready(function() {
 // =========================================================== //
 // ====================== BEERMAPPING API CALL================ //
 // =========================================================== //
-  var userInput;
 
-  if ($('#city-search') == '') {
-    $('#search-button').attr('disabled')
-  }
-  
   $('#search-button').on('click', function(event) {
-    userInput = $('#city-search').val().trim();
+    var userInput = $('#city-search').val().trim();
     $('#beer-table > tbody').empty();
     var queryUrl = 'https://thingproxy.freeboard.io/fetch/http://beermapping.com/webservice/loccity/E3b1372b6db3c5e549e795a11ed77331/' + userInput + '&s=json'
     $.ajax({
@@ -157,7 +151,6 @@ $(document).ready(function() {
     };
 
     database.ref().push(newComment);
-    console.log(newComment.name)
 
     $("#name").val("");
     $("#age").val("");
@@ -165,28 +158,26 @@ $(document).ready(function() {
   });
 
   database.ref().on("child_added", function (childSnapshot, prevChildKey) {
-    console.log(childSnapshot);
-    console.log(childSnapshot.val());
 
     var name = childSnapshot.val().newName;
     var age = childSnapshot.val().newAge;
     var comment = childSnapshot.val().newComment;
-
-    console.log(name);
-  
-    // Firebase watcher + initial loader HINT: .on("value")
-    database.ref().on("value", function (snapshot) {
-      // Log everything that's coming out of snapshot
-      console.log(snapshot.val());
-      console.log(snapshot.val().name);
-      console.log(snapshot.val().age);
-      console.log(snapshot.val().comment);
-
-      $('#input-comments > tbody').append(`<tr><td>${name}</td><td>${age}</td><td>${comment}</td></tr>`)
-
-    });
+    $('#input-comments > tbody').append(`<tr><td>${name}</td><td>${age}</td><td>${comment}</td></tr>`)
   });
 
+  // Function that disables submit button
+  function checkAge() {
+    var age = $("#age").val().trim();
+    if (age < 21 || age >= 150) {
+      $('#submit').attr("disabled", true);
+    } else {
+      $('#submit').attr("disabled", false);
+    }
+  };
+
+  $("#age").blur(function() {
+    checkAge()
+  });
 });
 
   

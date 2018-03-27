@@ -52,7 +52,7 @@
     <div class='grid-x'>
       <div class='cell medium-12 small-12'>
         <!-- Begin BeerMapping results table -->
-        <table id='beer-table' class='highlight responsive-table'>
+        <table id='beer-table' class='highlight responsive-table' >
           <thead>
             <tr>
               <th></th>
@@ -84,7 +84,7 @@
         </div>
       </div>
       <!-- End Google Map, begin comments section -->
-      <div class='cell medium-6 small-12'>
+      <div class='cell medium-12 small-12'>
         <form data-abide novalidate>
           <div data-abide-error class='alert callout' style='display: none'>
             <p>
@@ -120,13 +120,14 @@
             </div>
             <div class="row">
               <fieldset class="large-6 columns">
+                <div class="hidden">ERROR GOES HERE</div>
                 <button class="button" id='submit' type="submit" value="Submit">Submit</button>
               </fieldset>
             </div>
           </div>
         </form>
       </div>
-      <div class='cell medium-6 small-12'>
+      <div class='cell medium-12 small-12'>
         <table id="input-comments">
           <thead>
             <tr>
@@ -154,54 +155,7 @@
   <!-- End Foundation and begin Materialize -->
   <div>
 
-    <!-- table for comment section  -->
-    <!--<div class="row">
-      <form class="col s12">
-        <div class="row">
-
-          <table id="input-comments" class="striped">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Comment</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-
-            </tbody>
-          </table>
-
-
-        </div>
-
-    </div>
-  </div>
-
-  <br>
-  <br>
-  <br>
-
-  <!-- <script>
-      function initMap() {
-        var location = { lat: 39.742043, lng: -104.991531 };
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 10,
-          center: location
-        });
-        var marker = new google.maps.Marker({
-          position: location,
-          map: map
-        });
-      }
-    </script> -->
-
+    
     <input id="origin-input" class="controls" type="text"
         placeholder="Enter an origin location">
 
@@ -225,17 +179,14 @@
       // This example requires the Places library. Include the libraries=places
       // parameter when you first load the API. For example:
       // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           mapTypeControl: false,
           center: {lat: 39.742043, lng: -104.991531},
           zoom: 13
         });
-
         new AutocompleteDirectionsHandler(map);
       }
-
        /**
         * @constructor
        */
@@ -250,24 +201,19 @@
         this.directionsService = new google.maps.DirectionsService;
         this.directionsDisplay = new google.maps.DirectionsRenderer;
         this.directionsDisplay.setMap(map);
-
         var originAutocomplete = new google.maps.places.Autocomplete(
             originInput, {placeIdOnly: true});
         var destinationAutocomplete = new google.maps.places.Autocomplete(
             destinationInput, {placeIdOnly: true});
-
         this.setupClickListener('changemode-walking', 'WALKING');
         this.setupClickListener('changemode-transit', 'TRANSIT');
         this.setupClickListener('changemode-driving', 'DRIVING');
-
         this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
         this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
-
         this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
         this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(destinationInput);
         this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(modeSelector);
       }
-
       // Sets a listener on a radio button to change the filter type on Places
       // Autocomplete.
       AutocompleteDirectionsHandler.prototype.setupClickListener = function(id, mode) {
@@ -278,7 +224,6 @@
           me.route();
         });
       };
-
       AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(autocomplete, mode) {
         var me = this;
         autocomplete.bindTo('bounds', this.map);
@@ -295,15 +240,12 @@
           }
           me.route();
         });
-
       };
-
       AutocompleteDirectionsHandler.prototype.route = function() {
         if (!this.originPlaceId || !this.destinationPlaceId) {
           return;
         }
         var me = this;
-
         this.directionsService.route({
           origin: {'placeId': this.originPlaceId},
           destination: {'placeId': this.destinationPlaceId},
@@ -316,14 +258,12 @@
           }
         });
       };
-
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD05drdGt8PJ_HeqPeupTCof649sOQpNiI&libraries=places&callback=initMap"
         ></script>
     
     <!-- <script async defer src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD05drdGt8PJ_HeqPeupTCof649sOQpNiI&callback=initMap">
      </script> -->
-
 </body>
 
 </html>
