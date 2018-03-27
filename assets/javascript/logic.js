@@ -6,7 +6,7 @@ $(document).ready(function() {
     {fact: 'Amsterdam pays alcoholics in beer. For cleaning the city streets, local alcoholics get 10 Euros, half a packet of rolling tobacco and 5 beers as payment by a government-funded organization.'},
     {fact: 'In 1814, almost 400,000 gallons of beer flooded several streets in London after a huge vat ruptured in the parish of St. Giles.'},
     {fact: "Beer commercials in the US aren't really allowed to show people actually drinking the beer. It's a US law that people cannot actually be shown consuming an alcoholic beverage on television."},
-    {fact: 'The world´s strongest beer is Brewmeister´s "Snake Venom“. While regular beer usually have about 5% ABV, this Scottish killer has a stomach-burning 67,5% ABV.'},
+    {fact: 'The world´s strongest beer is Brewmeister´s "Snake Venom“. While regular beer usually have about 5% ABV, this Scottish killer has a stomach-burning 67.5% ABV.'},
     {fact: 'The most beer-drinking country in the world is the Czech Republic. With an incredible per capita beer consumption of almost 40 gallons a year, the Czechs are way out in front in the beer drinking world league table.'},
     {fact: 'Old Vikings believed that in their heaven called Valhalla, there is a giant goat whose udders provided unlimited supply of beer.'},
     {fact: 'Cenosillicaphobia is the fear of an empty beer glass.'},
@@ -26,7 +26,6 @@ $(document).ready(function() {
   function factRotation(i) {
     if(i < beerFacts.length) {
       setTimeout(function() {
-        console.log(beerFacts[i])
         var newFact = $("<p>");
         $('#beer-facts').empty();
         $('#beer-facts').append(newFact);
@@ -176,7 +175,16 @@ $(document).ready(function() {
     });
   });
 
+  // Function that disables submit button
+  function checkAge() {
+    var age = $("#age").val().trim();
+    if (age <= 21 || age >= 150) {
+      $('#submit').addClass("disabled");
+    };
+  };
 
+  $("#age").blur(function() {
+    checkAge()});
 });
 
   
