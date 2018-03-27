@@ -9,10 +9,14 @@
   <link rel='icon' href='assets/images/favicon.ico' type='image/x-icon'>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css'>
   <link rel='stylesheet' href='https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css'>
+  <link rel='stylesheet' href='https://cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css'>
   <link rel='stylesheet' type='text/css' href='assets/css/style.css'>
   <script src='https://www.gstatic.com/firebasejs/4.11.0/firebase.js'></script>
   <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
   <script type='text/javascript' src='https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js'></script>
+  <script src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
+  <script src="https://cdn.datatables.net/rowreorder/1.2.3/js/dataTables.rowReorder.min.js"></script>
+  <script src='https://cdn.datatables.net/rowreorder/1.2.3/js/dataTables.rowReorder.min.js'></script>
   <script src='assets/javascript/logic.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js'></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD05drdGt8PJ_HeqPeupTCof649sOQpNiI&callback=initMap"></script>
@@ -59,7 +63,7 @@
               <th>Street Address</th>
               <th>City</th>
               <th>State</th>
-              <th>Zip</th>
+              <th></th>
               <th></th>
               <th></th>
               <th></th>
@@ -79,7 +83,7 @@
         </div>
       </div>
       <!-- End Google Map, begin comments section -->
-      <div class='cell medium-12 small-12'>
+      <div class='cell medium-6 small-12'>
         <form data-abide novalidate>
           <div data-abide-error class='alert callout' style='display: none'>
             <p>
@@ -121,6 +125,25 @@
           </div>
         </form>
       </div>
+      <div class='cell medium-6 small-12'>
+        <table id="input-comments">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Comment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
 
 
 
@@ -131,7 +154,7 @@
   <div>
 
     <!-- table for comment section  -->
-    <div class="row">
+    <!--<div class="row">
       <form class="col s12">
         <div class="row">
 
@@ -161,55 +184,22 @@
   </div>
   </div>
 
-  <div class="grid-x grid-padding-x">
-      <div class="cell">
-        <h2>Abide Demo</h2>
-        <p>These input types create a text field: <code>text</code>, <code>date</code>, <code>datetime</code>, <code>datetime-local</code>, <code>email</code>, <code>month</code>, <code>number</code>, <code>password</code>, <code>search</code>, <code>tel</code>,
-          <code>time</code>, <code>url</code>, and <code>week</code>. Note the use of the novalidate attribute to disable any browser validation that could conflict with Abide.</p>
-        <form data-abide novalidate>
-          <div data-abide-error class="alert callout" style="display: none;">
-            <p><i class="fi-alert"></i> There are some errors in your form.</p>
-          </div>
-          <div class="grid-x grid-padding-x">
-            <div class="small-12 cell">
-              <label>Number Required
-            <input type="text" placeholder="1234" aria-describedby="exampleHelpText" required pattern="number">
-            <span class="form-error">
-              Yo, you had better fill this out, it's required.
-            </span>
-          </label>
-              <p class="help-text" id="exampleHelpText">Here's how you use this input field!</p>
-            </div>
-          </div>
 
-
-          </div>
-          <div class="grid-x grid-padding-x">
-            <fieldset class="large-6 cell">
-              <button class="button" type="submit" value="Submit">Submit</button>
-            </fieldset>
-            <fieldset class="large-6 cell">
-              <button class="button" type="reset" value="Reset">Reset</button>
-            </fieldset>
-          </div>
-        </form>
-      </div>
-    </div>
-
-
-  <script>
-    function initMap() {
-    var location = { lat: 39.742043, lng: -104.991531 };
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 10,
-      center: location
-    });
-    var marker = new google.maps.Marker({
-      position: location,
-      map: map
-    });
-  }
-  </script>
+-->
+    <script>
+      function initMap() {
+        var location = { lat: 39.742043, lng: -104.991531 };
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: location
+        });
+        var marker = new google.maps.Marker({
+          position: location,
+          map: map
+        });
+      }
+    </script>
 
 </body>
+
 </html>

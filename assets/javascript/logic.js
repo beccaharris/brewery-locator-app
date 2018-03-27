@@ -65,6 +65,7 @@ $(document).ready(function() {
           $('#beer-table').DataTable().clear().destroy();
         }
         $('#beer-table').DataTable({
+          responsive: true,
           data: obj,
           columns: [
             {data: 'id'},
