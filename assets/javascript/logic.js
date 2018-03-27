@@ -24,12 +24,13 @@ $(document).ready(function() {
   ];
 
   var fact = beerFacts[Math.floor(Math.random() * beerFacts.length)].fact
-  $('#beer-facts').append("<p>" + fact)
+  $('#beer-facts').append("<p class='fact'>" + fact)
 
   function factRotation(i) {
     if(i < beerFacts.length) {
       setTimeout(function() {
         var newFact = $("<p>");
+        newFact.addClass('fact');
         $('#beer-facts').empty();
         $('#beer-facts').append(newFact);
         newFact.text(beerFacts[i].fact);
@@ -37,7 +38,7 @@ $(document).ready(function() {
           i = 0
         }
         factRotation(i + 1);
-      }, 10000);
+      }, 25000);
     };
   };
 
@@ -118,7 +119,11 @@ $(document).ready(function() {
       }
     }) 
   })
-  // Initialize Firebase
+
+  // ================================================= //
+  // ====================== FIREBASE ================= //
+  // ================================================= //
+  
   var config = {
     apiKey: "AIzaSyDdqCYrEn0pxKLfqlxBy1YDaPJfJyT10ZQ",
     authDomain: "brewery-locator-app-619ab.firebaseapp.com",

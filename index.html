@@ -11,28 +11,26 @@
   <link rel='stylesheet' href='https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css'>
   <link rel='stylesheet' href='https://cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css'>
   <link rel='stylesheet' type='text/css' href='assets/css/style.css'>
-  <link href="https://fonts.googleapis.com/css?family=Cuprum" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cuprum|Chela+One" rel="stylesheet">
   <script src='https://www.gstatic.com/firebasejs/4.11.0/firebase.js'></script>
   <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
   <script type='text/javascript' src='https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js'></script>
   <script src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
-  <script src="https://cdn.datatables.net/rowreorder/1.2.3/js/dataTables.rowReorder.min.js"></script>
   <script src='https://cdn.datatables.net/rowreorder/1.2.3/js/dataTables.rowReorder.min.js'></script>
   <script src='assets/javascript/logic.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js'></script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD05drdGt8PJ_HeqPeupTCof649sOQpNiI&callback=initMap"></script>
 </head>
 
 <body>
 
-  <!-- Start implementing Foundation - replace Materialize -->
+  <!-- Header -->
   <header>
     <div data-sticky-container>
-      <div class='top-bar'>
-        <h2>Beer Queenz</h2>
+      <div class='top-bar high-nav'>
+        <h1 class="app-title">beer.</h1>
       </div>
     </div>
-    <h3>Enter a city here and find yourself some beer!</h3>
+    <h2 class="search-label">Enter a city here and find yourself some beer!</h2>
     <div class='input-group'>
       <input class='input-group-field' id='city-search' placeholder='Enter a city name here' type='text'>
       <div class='input-group-button'>
@@ -40,8 +38,8 @@
       </div>
     </div>
     <div data-sticky-container>
-      <div class='top-bar'>
-        <marquee id='beer-facts'>
+      <div class='top-bar lower-nav'>
+        <marquee id='beer-facts' scrollamount='8'>
           <!-- Inject jQuery beer facts here -->
         </marquee>
       </div>
@@ -52,7 +50,7 @@
     <div class='grid-x'>
       <div class='cell medium-12 small-12'>
         <!-- Begin BeerMapping results table -->
-        <table id='beer-table' class='highlight responsive-table' >
+        <table id='beer-table' class='highlight responsive-table'>
           <thead>
             <tr>
               <th></th>
@@ -79,9 +77,23 @@
       </div>
       <!-- End BeerMapping results table, begin actual Google Map -->
       <div class='cell medium-12 small-12'>
-        <div id="map">
-          <!--Google Map show here -->
+        <input id="origin-input" class="controls" type="text" placeholder="Enter an origin location">
+        <br>
+        <input id="destination-input" class="controls" type="text" placeholder="Enter a destination location">
+
+        <div id="mode-selector" class="controls">
+          <input type="radio" name="type" id="changemode-walking" checked="checked">
+          <label for="changemode-walking">Walking</label>
+
+          <input type="radio" name="type" id="changemode-transit">
+          <label for="changemode-transit">Transit</label>
+
+          <input type="radio" name="type" id="changemode-driving">
+          <label for="changemode-driving">Driving</label>
         </div>
+
+        <div id="map"></div>
+
       </div>
       <!-- End Google Map, begin comments section -->
       <div class='cell medium-12 small-12'>
@@ -155,25 +167,8 @@
   <!-- End Foundation and begin Materialize -->
   <div>
 
-    
-    <input id="origin-input" class="controls" type="text"
-        placeholder="Enter an origin location">
 
-    <input id="destination-input" class="controls" type="text"
-        placeholder="Enter a destination location">
 
-    <div id="mode-selector" class="controls">
-      <input type="radio" name="type" id="changemode-walking" checked="checked">
-      <label for="changemode-walking">Walking</label>
-
-      <input type="radio" name="type" id="changemode-transit">
-      <label for="changemode-transit">Transit</label>
-
-      <input type="radio" name="type" id="changemode-driving">
-      <label for="changemode-driving">Driving</label>
-    </div>
-
-    <div id="map"></div>
 
     <script>
       // This example requires the Places library. Include the libraries=places
@@ -182,14 +177,14 @@
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           mapTypeControl: false,
-          center: {lat: 39.742043, lng: -104.991531},
+          center: { lat: 39.742043, lng: -104.991531 },
           zoom: 13
         });
         new AutocompleteDirectionsHandler(map);
       }
-       /**
-        * @constructor
-       */
+      /**
+       * @constructor
+      */
       function AutocompleteDirectionsHandler(map) {
         this.map = map;
         this.originPlaceId = null;
@@ -202,9 +197,9 @@
         this.directionsDisplay = new google.maps.DirectionsRenderer;
         this.directionsDisplay.setMap(map);
         var originAutocomplete = new google.maps.places.Autocomplete(
-            originInput, {placeIdOnly: true});
+          originInput, { placeIdOnly: true });
         var destinationAutocomplete = new google.maps.places.Autocomplete(
-            destinationInput, {placeIdOnly: true});
+          destinationInput, { placeIdOnly: true });
         this.setupClickListener('changemode-walking', 'WALKING');
         this.setupClickListener('changemode-transit', 'TRANSIT');
         this.setupClickListener('changemode-driving', 'DRIVING');
@@ -216,18 +211,18 @@
       }
       // Sets a listener on a radio button to change the filter type on Places
       // Autocomplete.
-      AutocompleteDirectionsHandler.prototype.setupClickListener = function(id, mode) {
+      AutocompleteDirectionsHandler.prototype.setupClickListener = function (id, mode) {
         var radioButton = document.getElementById(id);
         var me = this;
-        radioButton.addEventListener('click', function() {
+        radioButton.addEventListener('click', function () {
           me.travelMode = mode;
           me.route();
         });
       };
-      AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(autocomplete, mode) {
+      AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function (autocomplete, mode) {
         var me = this;
         autocomplete.bindTo('bounds', this.map);
-        autocomplete.addListener('place_changed', function() {
+        autocomplete.addListener('place_changed', function () {
           var place = autocomplete.getPlace();
           if (!place.place_id) {
             window.alert("Please select an option from the dropdown list.");
@@ -241,16 +236,16 @@
           me.route();
         });
       };
-      AutocompleteDirectionsHandler.prototype.route = function() {
+      AutocompleteDirectionsHandler.prototype.route = function () {
         if (!this.originPlaceId || !this.destinationPlaceId) {
           return;
         }
         var me = this;
         this.directionsService.route({
-          origin: {'placeId': this.originPlaceId},
-          destination: {'placeId': this.destinationPlaceId},
+          origin: { 'placeId': this.originPlaceId },
+          destination: { 'placeId': this.destinationPlaceId },
           travelMode: this.travelMode
-        }, function(response, status) {
+        }, function (response, status) {
           if (status === 'OK') {
             me.directionsDisplay.setDirections(response);
           } else {
@@ -259,11 +254,7 @@
         });
       };
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD05drdGt8PJ_HeqPeupTCof649sOQpNiI&libraries=places&callback=initMap"
-        ></script>
-    
-    <!-- <script async defer src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD05drdGt8PJ_HeqPeupTCof649sOQpNiI&callback=initMap">
-     </script> -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD05drdGt8PJ_HeqPeupTCof649sOQpNiI&libraries=places&callback=initMap"></script>
 </body>
 
 </html>
