@@ -9,6 +9,7 @@
   width: 800px;
   margin: 0 auto;
   margin-bottom: 60px;
+<<<<<<< HEAD
 }
 
 .controls {
@@ -53,4 +54,8 @@
   font-family: Roboto;
   font-size: 13px;
   font-weight: 300;
+=======
+.nav-wrapper {
+  background-color: #B22222;
+>>>>>>> 4066bc69f0823d86a8cac02d8e98a184c60e9349
 }
