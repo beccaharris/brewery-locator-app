@@ -132,11 +132,8 @@ $(document).ready(function() {
   $("#submit").on("click", function (event) {
     event.preventDefault();
     var name = $("#name").val().trim();
-    console.log(name);
     var age = $("#age").val().trim();
-    console.log(age)
     var comment = $("#comment").val().trim();
-    console.log(comment)
 
     var newComment = {
       newName: name,
@@ -144,31 +141,23 @@ $(document).ready(function() {
       newComment: comment
     };
 
+    // Makes name, age, and comment into one object that gets pushed to firebase
     database.ref().push(newComment);
-    console.log(newComment.name)
 
     $("#name").val("");
     $("#age").val("");
     $("#comment").val("");
   });
 
+  // Using child added so that you can add multipe names, ages, and comments without overwriting them
   database.ref().on("child_added", function (childSnapshot, prevChildKey) {
-    console.log(childSnapshot);
-    console.log(childSnapshot.val());
 
     var name = childSnapshot.val().newName;
     var age = childSnapshot.val().newAge;
     var comment = childSnapshot.val().newComment;
 
-    console.log(name);
-  
     // Firebase watcher + initial loader HINT: .on("value")
     database.ref().on("value", function (snapshot) {
-      // Log everything that's coming out of snapshot
-      console.log(snapshot.val());
-      console.log(snapshot.val().name);
-      console.log(snapshot.val().age);
-      console.log(snapshot.val().comment);
 
       $('#input-comments > tbody').append(`<tr><td>${name}</td><td>${age}</td><td>${comment}</td></tr>`)
 
@@ -178,13 +167,17 @@ $(document).ready(function() {
   // Function that disables submit button
   function checkAge() {
     var age = $("#age").val().trim();
-    if (age <= 21 || age >= 150) {
+    if (age < 21 || age > 150) {
+      $("#error").append("<b>Must be 21 or over or a reasonable age</b>");
       $('#submit').addClass("disabled");
-    };
+    }
+    else {
+      $("#error").empty();
+      $('#submit').removeClass("disabled");
+    }
   };
 
+  // If age does not meet checkAge conditions, .blur run function checkAge
   $("#age").blur(function() {
     checkAge()});
 });
-
-  
