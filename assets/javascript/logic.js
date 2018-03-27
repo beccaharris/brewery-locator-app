@@ -101,6 +101,9 @@ $(document).ready(function() {
               "targets": [5],
               "visible": false
             },{
+              "targets": [9],
+              "visible": false
+            },{
               "targets": [10],
               "visible": false
             },{

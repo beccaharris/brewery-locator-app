@@ -11,6 +11,7 @@
   <link rel='stylesheet' href='https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css'>
   <link rel='stylesheet' href='https://cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css'>
   <link rel='stylesheet' type='text/css' href='assets/css/style.css'>
+  <link href="https://fonts.googleapis.com/css?family=Cuprum" rel="stylesheet">
   <script src='https://www.gstatic.com/firebasejs/4.11.0/firebase.js'></script>
   <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
   <script type='text/javascript' src='https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js'></script>
@@ -28,7 +29,7 @@
   <header>
     <div data-sticky-container>
       <div class='top-bar'>
-        <h2>App Title/Logo Goes here</h2>
+        <h2>Beer Queenz</h2>
       </div>
     </div>
     <h3>Enter a city here and find yourself some beer!</h3>
@@ -182,11 +183,12 @@
 
     </div>
   </div>
-  </div>
 
+  <br>
+  <br>
+  <br>
 
--->
-    <script>
+  <!-- <script>
       function initMap() {
         var location = { lat: 39.742043, lng: -104.991531 };
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -198,7 +200,129 @@
           map: map
         });
       }
+    </script> -->
+
+    <input id="origin-input" class="controls" type="text"
+        placeholder="Enter an origin location">
+
+    <input id="destination-input" class="controls" type="text"
+        placeholder="Enter a destination location">
+
+    <div id="mode-selector" class="controls">
+      <input type="radio" name="type" id="changemode-walking" checked="checked">
+      <label for="changemode-walking">Walking</label>
+
+      <input type="radio" name="type" id="changemode-transit">
+      <label for="changemode-transit">Transit</label>
+
+      <input type="radio" name="type" id="changemode-driving">
+      <label for="changemode-driving">Driving</label>
+    </div>
+
+    <div id="map"></div>
+
+    <script>
+      // This example requires the Places library. Include the libraries=places
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          mapTypeControl: false,
+          center: {lat: 39.742043, lng: -104.991531},
+          zoom: 13
+        });
+
+        new AutocompleteDirectionsHandler(map);
+      }
+
+       /**
+        * @constructor
+       */
+      function AutocompleteDirectionsHandler(map) {
+        this.map = map;
+        this.originPlaceId = null;
+        this.destinationPlaceId = null;
+        this.travelMode = 'WALKING';
+        var originInput = document.getElementById('origin-input');
+        var destinationInput = document.getElementById('destination-input');
+        var modeSelector = document.getElementById('mode-selector');
+        this.directionsService = new google.maps.DirectionsService;
+        this.directionsDisplay = new google.maps.DirectionsRenderer;
+        this.directionsDisplay.setMap(map);
+
+        var originAutocomplete = new google.maps.places.Autocomplete(
+            originInput, {placeIdOnly: true});
+        var destinationAutocomplete = new google.maps.places.Autocomplete(
+            destinationInput, {placeIdOnly: true});
+
+        this.setupClickListener('changemode-walking', 'WALKING');
+        this.setupClickListener('changemode-transit', 'TRANSIT');
+        this.setupClickListener('changemode-driving', 'DRIVING');
+
+        this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
+        this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
+
+        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
+        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(destinationInput);
+        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(modeSelector);
+      }
+
+      // Sets a listener on a radio button to change the filter type on Places
+      // Autocomplete.
+      AutocompleteDirectionsHandler.prototype.setupClickListener = function(id, mode) {
+        var radioButton = document.getElementById(id);
+        var me = this;
+        radioButton.addEventListener('click', function() {
+          me.travelMode = mode;
+          me.route();
+        });
+      };
+
+      AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(autocomplete, mode) {
+        var me = this;
+        autocomplete.bindTo('bounds', this.map);
+        autocomplete.addListener('place_changed', function() {
+          var place = autocomplete.getPlace();
+          if (!place.place_id) {
+            window.alert("Please select an option from the dropdown list.");
+            return;
+          }
+          if (mode === 'ORIG') {
+            me.originPlaceId = place.place_id;
+          } else {
+            me.destinationPlaceId = place.place_id;
+          }
+          me.route();
+        });
+
+      };
+
+      AutocompleteDirectionsHandler.prototype.route = function() {
+        if (!this.originPlaceId || !this.destinationPlaceId) {
+          return;
+        }
+        var me = this;
+
+        this.directionsService.route({
+          origin: {'placeId': this.originPlaceId},
+          destination: {'placeId': this.destinationPlaceId},
+          travelMode: this.travelMode
+        }, function(response, status) {
+          if (status === 'OK') {
+            me.directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      };
+
     </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD05drdGt8PJ_HeqPeupTCof649sOQpNiI&libraries=places&callback=initMap"
+        ></script>
+    
+    <!-- <script async defer src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD05drdGt8PJ_HeqPeupTCof649sOQpNiI&callback=initMap">
+     </script> -->
 
 </body>
 
