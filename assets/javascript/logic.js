@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   var beerFacts = [
     {fact: 'At any given time, 0.7% of the world is drunk. So 50 million people are drunk right now.'},
     {fact: "The worlds longest hangover lasted 4 weeks after a Scotsman consumed 60 pints of beer."},
@@ -18,14 +18,15 @@ $(document).ready(function() {
     {fact: 'Coined in the early 1900s, the word "alcoholiday" means leisure time spent drinking.'},
     {fact: "The Code of Hammurabi decreed that bartenders who watered down beer would be executed."},
     {fact: "J.K. Rowling invented Quidditch in a pub."}
+
   ];
 
   var fact = beerFacts[Math.floor(Math.random() * beerFacts.length)].fact
   $('#beer-facts').append("<p>" + fact)
 
   function factRotation(i) {
-    if(i < beerFacts.length) {
-      setTimeout(function() {
+    if (i < beerFacts.length) {
+      setTimeout(function () {
         console.log(beerFacts[i])
         var newFact = $("<p>");
         $('#beer-facts').empty();
@@ -41,142 +42,154 @@ $(document).ready(function() {
 
   factRotation(Math.floor(Math.random() * beerFacts.length));
 
-// =========================================================== //
-// ====================== BEERMAPPING ======================== //
-// =========================================================== //
+  // =========================================================== //
+  // ====================== BEERMAPPING ======================== //
+  // =========================================================== //
   var userInput;
-  
-  $('#search-button').on('click', function(event) {
+
+  $('#search-button').on('click', function (event) {
     userInput = $('#city-search').val().trim();
     $('#beer-table > tbody').empty();
     var queryUrl = 'https://thingproxy.freeboard.io/fetch/http://beermapping.com/webservice/loccity/E3b1372b6db3c5e549e795a11ed77331/' + userInput + '&s=json'
     $.ajax({
       url: queryUrl,
       method: 'GET',
-      success: function(obj, textstatus) {
+      success: function (obj, textstatus) {
         if ($.fn.DataTable.isDataTable("#beer-table")) {
           $('#beer-table').DataTable().clear().destroy();
         }
         $('#beer-table').DataTable({
           data: obj,
           columns: [
-            {data: 'id'},
-            {data: 'name'},
-            {data: 'status'},
-            {data: 'reviewlink'},
-            {data: 'proxylink'},
-            {data: 'blogmap'},
-            {data: 'street'},
-            {data: 'city'},
-            {data: 'state'},
-            {data: 'zip'},
-            {data: 'country'},
-            {data: 'phone'},
-            {data: 'url'},
-            {data: 'overall'},
-            {data: 'imagecount'}
+            { data: 'id' },
+            { data: 'name' },
+            { data: 'status' },
+            { data: 'reviewlink' },
+            { data: 'proxylink' },
+            { data: 'blogmap' },
+            { data: 'street' },
+            { data: 'city' },
+            { data: 'state' },
+            { data: 'zip' },
+            { data: 'country' },
+            { data: 'phone' },
+            { data: 'url' },
+            { data: 'overall' },
+            { data: 'imagecount' }
           ],
-          "columnDefs" : [
+          "columnDefs": [
             {
               "targets": [0],
               "visible": false
-            },{
+            }, {
               "targets": [2],
               "visible": false
-            },{
+            }, {
               "targets": [3],
               "visible": false
-            },{
+            }, {
               "targets": [4],
               "visible": false
-            },{
+            }, {
               "targets": [5],
               "visible": false
-            },{
+            }, {
               "targets": [10],
               "visible": false
-            },{
+            }, {
               "targets": [11],
               "visible": false
-            },{
+            }, {
               "targets": [12],
               "visible": false
-            },{
+            }, {
               "targets": [13],
               "visible": false
-            },{
+            }, {
               "targets": [14],
               "visible": false
             }
           ]
         })
       }
-    }) 
+    })
   })
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDdqCYrEn0pxKLfqlxBy1YDaPJfJyT10ZQ",
-    authDomain: "brewery-locator-app-619ab.firebaseapp.com",
-    databaseURL: "https://brewery-locator-app-619ab.firebaseio.com",
-    projectId: "brewery-locator-app-619ab",
-    storageBucket: "brewery-locator-app-619ab.appspot.com",
-    messagingSenderId: "159281817968"
-  };
-  firebase.initializeApp(config);
-
-  var database = firebase.database();
-  var name = "";
-  var age = "";
-  var comment = "";
-
-  // Capture Button Click
-  $("#submit").on("click", function (event) {
-    event.preventDefault();
-    var name = $("#name").val().trim();
-    console.log(name);
-    var age = $("#age").val().trim();
-    console.log(age)
-    var comment = $("#comment").val().trim();
-    console.log(comment)
-
-    var newComment = {
-      newName: name,
-      newAge: age,
-      newComment: comment
-    };
-
-    database.ref().push(newComment);
-    console.log(newComment.name)
-
-    $("#name").val("");
-    $("#age").val("");
-    $("#comment").val("");
-  });
-
-  database.ref().on("child_added", function (childSnapshot, prevChildKey) {
-    console.log(childSnapshot);
-    console.log(childSnapshot.val());
-
-    var name = childSnapshot.val().newName;
-    var age = childSnapshot.val().newAge;
-    var comment = childSnapshot.val().newComment;
-
-    console.log(name);
-  
-    // Firebase watcher + initial loader HINT: .on("value")
-    database.ref().on("value", function (snapshot) {
-      // Log everything that's coming out of snapshot
-      console.log(snapshot.val());
-      console.log(snapshot.val().name);
-      console.log(snapshot.val().age);
-      console.log(snapshot.val().comment);
-
-      $('#input-comments > tbody').append(`<tr><td>${name}</td><td>${age}</td><td>${comment}</td></tr>`)
-
-    });
-  });
-
-
 });
 
-  
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyDdqCYrEn0pxKLfqlxBy1YDaPJfJyT10ZQ",
+  authDomain: "brewery-locator-app-619ab.firebaseapp.com",
+  databaseURL: "https://brewery-locator-app-619ab.firebaseio.com",
+  projectId: "brewery-locator-app-619ab",
+  storageBucket: "brewery-locator-app-619ab.appspot.com",
+  messagingSenderId: "159281817968"
+};
+firebase.initializeApp(config);
+
+var database = firebase.database();
+var name = "";
+var age = "";
+var comment = "";
+
+// Capture Button Click
+$("#submit").on("click", function (event) {
+  event.preventDefault();
+  var name = $("#name").val().trim();
+  console.log(name);
+  var age = $("#age").val().trim();
+  console.log(age)
+  var comment = $("#comment").val().trim();
+  console.log(comment)
+   
+  var newComment = {
+    newName: name,
+    newAge: age,
+    newComment: comment
+  };
+
+  database.ref().push(newComment);
+  console.log(newComment.name)
+
+  $("#name").val("");
+  $("#age").val("");
+  $("#comment").val("");
+
+ 
+});
+
+database.ref().on("child_added", function (childSnapshot, prevChildKey) {
+  console.log(childSnapshot);
+  console.log(childSnapshot.val());
+
+  var name = childSnapshot.val().newName;
+  var age = childSnapshot.val().newAge;
+  var comment = childSnapshot.val().newComment;
+
+  console.log(name);
+
+
+  // Firebase watcher + initial loader HINT: .on("value")
+  database.ref().on("value", function (snapshot) {
+    // Log everything that's coming out of snapshot
+    console.log(snapshot.val());
+    console.log(snapshot.val().name);
+    console.log(snapshot.val().age);
+    console.log(snapshot.val().comment);
+
+    
+   // function checkAge(age) { 
+    //if(age<21) { 
+    //alert('You must be 21 or older to continue'); 
+    //document.getElementById("#submit").disabled=true; 
+   // }
+    //checkAge();
+    //console.log(age);
+    //}; 
+
+    $('#input-comments > tbody').append(`<tr><td>${name}</td><td>${age}</td><td>${comment}</td></tr>`)
+
+  });
+});
+
+
