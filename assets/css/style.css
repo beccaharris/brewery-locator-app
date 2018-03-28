@@ -129,14 +129,18 @@ select {
 }
 /* Comments Accordion */
 .accordion-panel-title { 
+  border-radius:4px;
 	background-color: #470d0d;
-	border-bottom: 1px solid #FFFFFF;
+  border-bottom: 1px solid #fff;
+	border-right: 1px solid #fff;
+	border-left: 1px solid #fff;;
 	cursor: pointer;
 	padding: 10px;
-	color: #FFFFFF;
+	color: #fff;;
 }	
 .accordion-panel-content {
-	background-color: #EFEFEF;
+  border-radius:4px;
+	background-color: #efefef;
 	display: none;
 	padding: 10px;
 }
