@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  
   $('.active-map-div').hide();
   // =========================================================== //
   // ====================== BEER FACTS  ======================== //
@@ -185,5 +186,17 @@ $(document).ready(function () {
   $("#age").blur(function () {
     checkAge()
   });
-});
+
+  // ================================================= //
+  // ================== ACCORDION LOGIC ============== //
+  // ================================================= //
+  
+  function accordion() {
+    $('.accordion-panel-title').on('click',function() {
+      $('.accordion-panel-content').slideUp('slow');
+      $(this).next('.accordion-panel-content').slideDown('slow');
+    });
+  } 
+  accordion();
+}) 
 

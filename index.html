@@ -12,21 +12,11 @@
   <link rel='stylesheet' href='https://cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css'>
   <link rel='stylesheet' type='text/css' href='assets/css/style.css'>
   <link href="https://fonts.googleapis.com/css?family=Cuprum|Chela+One" rel="stylesheet">
-  <script src='https://www.gstatic.com/firebasejs/4.11.0/firebase.js'></script>
-  <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-  <script type='text/javascript' src='https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js'></script>
-  <script src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
-  <script src='https://cdn.datatables.net/rowreorder/1.2.3/js/dataTables.rowReorder.min.js'></script>
-  <script src='assets/javascript/logic.js'></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js'></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"></script>
-  <script async defer src="https://www.instagram.com/embed.js"></script>
-
 </head>
 
 <body>
 
-  <!-- Header -->
+  <!-- Header (will load on landing and on search) -->
   <header>
     <div data-sticky-container>
       <div class='top-bar high-nav'>
@@ -60,249 +50,319 @@
     </div>
   </header>
 
+  <!-- ============================================================================= -->
+  <!-- This section is displayed until the FIND ME BEER button is clicked; once clicked, everything here is hidden except for the comments -->
+  <!-- ============================================================================= -->
   <div class="inactive-map-div">
-    <div class='grid-container'>
-      <div class='grid-x'>
-
-        <div class='cell medium-12 small-12'>
-          <div class="card">
-            <div class="card-section">
-              <div id="instagram">
-                <!-- inject instagram stuff --> 
-              </div>
-            </div>
+    <div class='grid-x'>
+      <div class='cell'>
+        <div class="card">
+          <div class="card-section">
+            <h5>Put some content in here for a landing page...</h5>
           </div>
         </div>
       </div>
+      <div class="cell medium-2 small-2"></div>
+      <div class='cell medium-8 small-8'>
+        <div id="accordion-div">
+          <div class="accordion-panel-title">Leave us a comment!</div>
+
+          <div class="accordion-panel-content">
+            <form data-abide novalidate>
+              <div data-abide-error class='alert callout' style='display: none'>
+                <p>
+                  <i class='fi-alert'></i> There are some errors in your form.</p>
+              </div>
+              <div class='row'>
+                <div class='small-12 medium-12 columns'>
+                  <label>Name
+                    <input type='text' placeholder='Type Name' id='name' aria-describedby="exampleHelpText" required>
+                    <span class='form-error'>
+                      You should fill this field out...it's required.
+                    </span>
+                  </label>
+                </div>
+                <div class='small-12 medium-12 columns'>
+                  <label>Age
+                    <input type='text' placeholder='1234' id='age' min='21' aria-describedby="exampleHelpText" required pattern='number'>
+                    <span class='form-error'>
+                      You should fill this field out...it's required. Also, this number must be above 21!
+                    </span>
+                  </label>
+                </div>
+                <div class='small-12 medium-12 columns'>
+                  <label>Comment
+                    <textarea placeholder='Type your comment here!' id='comment' aria-describedby="exampleHelpText" required></textarea>
+                    <span class='form-error'>
+                      You should fill this field out...it's required.
+                    </span>
+                  </label>
+                </div>
+                <div class="row">
+                  <fieldset class="large-6 columns">
+                    <button class="button" id='submit' type="submit" value="Submit">Submit</button>
+                  </fieldset>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="accordion-panel-title">Check out what other people had to say</div>
+          <div class="accordion-panel-content">
+            <table id="input-comments">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>Comment</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+      <div class="cell medium-2 small-2"></div>
     </div>
   </div>
-
 
   <!-- ============================================================================= -->
   <!-- This section is hidden until the FIND ME BEER button is clicked; once clicked will display table with results, google map, and comments section -->
   <!-- ============================================================================= -->
   <div class="active-map-div">
-    <div class='grid-container'>
-      <div class='grid-x'>
-
-        <div class='cell medium-12 small-12'>
-          <!-- Begin BeerMapping results table -->
-          <div class="card">
-            <div class="card-divider">
-              <h2 class="search-results">your search results are in!</h2>
-            </div>
-            <div class="card-section">
-              <table style="width: 100%" id='beer-table' class='display compact'>
-                <thead>
-                  <tr>
-                    <th></th>
-                    <th style="width: 35%">Brewery Name</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th style="width: 35%">Street Address</th>
-                    <th style="width: 15%">City</th>
-                    <th style="width: 15%">State</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!-- Call BeerMapping API and inject jQuery here -->
-                </tbody>
-              </table>
-            </div>
+    <div class='grid-x'>
+      <div class='cell'>
+        <!-- Begin BeerMapping results table -->
+        <div class="card">
+          <div class="card-divider">
+            <h2 class="search-results">your search results are in!</h2>
           </div>
-        </div>
-        <!-- End BeerMapping results table, begin actual Google Map -->
-        <div class='cell medium-12 small-12'>
-          <input id="origin-input" class="controls" type="text" placeholder="Enter an origin location">
-          <br>
-          <input id="destination-input" class="controls" type="text" placeholder="Enter a destination location">
-
-          <div id="mode-selector" class="controls">
-            <input type="radio" name="type" id="changemode-walking" checked="checked">
-            <label for="changemode-walking">Walking</label>
-
-            <input type="radio" name="type" id="changemode-transit">
-            <label for="changemode-transit">Transit</label>
-
-            <input type="radio" name="type" id="changemode-driving">
-            <label for="changemode-driving">Driving</label>
-          </div>
-
-          <div id="map"></div>
-
-        </div>
-        <!-- End Google Map, begin comments section -->
-        <div class='cell medium-12 small-12'>
-          <div class="card">
-            <div class="card-section">
-              <!-- Comments form -->
-              <form data-abide novalidate>
-                <div data-abide-error class='alert callout' style='display: none'>
-                  <p>
-                    <i class='fi-alert'></i> There are some errors in your form.</p>
-                </div>
-                <div class='row'>
-                  <div class='small-12 medium-12 columns'>
-                    <label>Name
-                      <input type='text' placeholder='Type Name' id='name' aria-describedby="exampleHelpText" required>
-                      <span class='form-error'>
-                        You should fill this field out...it's required.
-                      </span>
-                    </label>
-                    <p class='help-text' id='exampleHelpText'>Here's how you use this input field...</p>
-                  </div>
-                  <div class='small-12 medium-12 columns'>
-                    <label>Age
-                      <input type='text' placeholder='1234' id='age' min='21' aria-describedby="exampleHelpText" required pattern='number'>
-                      <span class='form-error'>
-                        You should fill this field out...it's required. Also, this number must be above 21!
-                      </span>
-                    </label>
-                    <p class='help-text' id='exampleHelpText'>Here's how you use this input field...</p>
-                  </div>
-                  <div class='small-12 medium-12 columns'>
-                    <label>Comment
-                      <textarea placeholder='Type your comment here!' id='comment' aria-describedby="exampleHelpText" required></textarea>
-                      <span class='form-error'>
-                        You should fill this field out...it's required.
-                      </span>
-                    </label>
-                    <p class='help-text' id='exampleHelpText'>Here's how you use this input field...</p>
-                  </div>
-                  <div class="row">
-                    <fieldset class="large-6 columns">
-                      <button class="button" id='submit' type="submit" value="Submit">Submit</button>
-                    </fieldset>
-                  </div>
-                </div>
-              </form>
-            </div>
-            <div class='cell medium-12 small-12'>
-              <table id="input-comments">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Comment</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+          <div class="card-section">
+            <table style="width: 100%" id='beer-table' class='display compact'>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th style="width: 35%">Brewery Name</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th style="width: 35%">Street Address</th>
+                  <th style="width: 15%">City</th>
+                  <th style="width: 15%">State</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Call BeerMapping API and inject jQuery here -->
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
+      <!-- End BeerMapping results table, begin actual Google Map -->
+      <div class='cell'>
+        <input id="origin-input" class="controls" type="text" placeholder="Enter an origin location">
+        <br>
+        <input id="destination-input" class="controls" type="text" placeholder="Enter a destination location">
+
+        <div id="mode-selector" class="controls">
+          <input type="radio" name="type" id="changemode-walking" checked="checked">
+          <label for="changemode-walking">Walking</label>
+
+          <input type="radio" name="type" id="changemode-transit">
+          <label for="changemode-transit">Transit</label>
+
+          <input type="radio" name="type" id="changemode-driving">
+          <label for="changemode-driving">Driving</label>
+        </div>
+
+        <div id="map"></div>
+
+      </div>
+
+
+      <!-- End Google Map, begin comments section -->
+      <div class="cell medium-2 small-2"></div>
+      <div class='cell medium-8 small-8'>
+        <div id="accordion-div">
+          <div class="accordion-panel-title">Leave us a comment!</div>
+
+          <div class="accordion-panel-content">
+            <form data-abide novalidate>
+              <div data-abide-error class='alert callout' style='display: none'>
+                <p>
+                  <i class='fi-alert'></i> There are some errors in your form.</p>
+              </div>
+              <div class='row'>
+                <div class='small-12 medium-12 columns'>
+                  <label>Name
+                    <input type='text' placeholder='Type Name' id='name' aria-describedby="exampleHelpText" required>
+                    <span class='form-error'>
+                      You should fill this field out...it's required.
+                    </span>
+                  </label>
+                </div>
+                <div class='small-12 medium-12 columns'>
+                  <label>Age
+                    <input type='text' placeholder='1234' id='age' min='21' aria-describedby="exampleHelpText" required pattern='number'>
+                    <span class='form-error'>
+                      You should fill this field out...it's required. Also, this number must be above 21!
+                    </span>
+                  </label>
+                </div>
+                <div class='small-12 medium-12 columns'>
+                  <label>Comment
+                    <textarea placeholder='Type your comment here!' id='comment' aria-describedby="exampleHelpText" required></textarea>
+                    <span class='form-error'>
+                      You should fill this field out...it's required.
+                    </span>
+                  </label>
+                </div>
+                <div class="row">
+                  <fieldset class="large-6 columns">
+                    <button class="button" id='submit' type="submit" value="Submit">Submit</button>
+                  </fieldset>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="accordion-panel-title">Check out what other people had to say</div>
+          <div class="accordion-panel-content">
+            <table id="input-comments">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>Comment</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+      <div class="cell medium-2 small-2"></div>
     </div>
   </div>
-  <div>
-    <div class="columns small-12" data-sticky-container>
-      <div class="top-bar sticky" data-sticky data-stick-to="bottom" data-top-anchor="example3" data-btm-anchor="foo2:top">
-        <h5>Copyright 2018: Rocelia Cooper, Dane Jackins, Hermon Alem, Becca Harris</h5>
-      </div>
+  <div class="columns small-12" data-sticky-container>
+    <div class="top-bar sticky" data-sticky data-stick-to="bottom" data-top-anchor="example3" data-btm-anchor="foo2:top">
+      <h5>Copyright 2018: Rocelia Cooper, Dane Jackins, Hermon Alem, Becca Harris</h5>
     </div>
+  </div>
 
-
-
-
-    <script>
-      // This example requires the Places library. Include the libraries=places
-      // parameter when you first load the API. For example:
-      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-      function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          mapTypeControl: false,
-          center: { lat: 39.742043, lng: -104.991531 },
-          zoom: 13
-        });
-        new AutocompleteDirectionsHandler(map);
-      }
-      /**
-       * @constructor
-      */
-      function AutocompleteDirectionsHandler(map) {
-        this.map = map;
-        this.originPlaceId = null;
-        this.destinationPlaceId = null;
-        this.travelMode = 'WALKING';
-        var originInput = document.getElementById('origin-input');
-        var destinationInput = document.getElementById('destination-input');
-        var modeSelector = document.getElementById('mode-selector');
-        this.directionsService = new google.maps.DirectionsService;
-        this.directionsDisplay = new google.maps.DirectionsRenderer;
-        this.directionsDisplay.setMap(map);
-        var originAutocomplete = new google.maps.places.Autocomplete(
-          originInput, { placeIdOnly: true });
-        var destinationAutocomplete = new google.maps.places.Autocomplete(
-          destinationInput, { placeIdOnly: true });
-        this.setupClickListener('changemode-walking', 'WALKING');
-        this.setupClickListener('changemode-transit', 'TRANSIT');
-        this.setupClickListener('changemode-driving', 'DRIVING');
-        this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
-        this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
-        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
-        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(destinationInput);
-        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(modeSelector);
-      }
-      // Sets a listener on a radio button to change the filter type on Places
-      // Autocomplete.
-      AutocompleteDirectionsHandler.prototype.setupClickListener = function (id, mode) {
-        var radioButton = document.getElementById(id);
-        var me = this;
-        radioButton.addEventListener('click', function () {
-          me.travelMode = mode;
-          me.route();
-        });
-      };
-      AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function (autocomplete, mode) {
-        var me = this;
-        autocomplete.bindTo('bounds', this.map);
-        autocomplete.addListener('place_changed', function () {
-          var place = autocomplete.getPlace();
-          if (!place.place_id) {
-            window.alert("Please select an option from the dropdown list.");
-            return;
-          }
-          if (mode === 'ORIG') {
-            me.originPlaceId = place.place_id;
-          } else {
-            me.destinationPlaceId = place.place_id;
-          }
-          me.route();
-        });
-      };
-      AutocompleteDirectionsHandler.prototype.route = function () {
-        if (!this.originPlaceId || !this.destinationPlaceId) {
+  <script>
+    // This example requires the Places library. Include the libraries=places
+    // parameter when you first load the API. For example:
+    // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+    function initMap() {
+      var map = new google.maps.Map(document.getElementById('map'), {
+        mapTypeControl: false,
+        center: { lat: 39.742043, lng: -104.991531 },
+        zoom: 13
+      });
+      new AutocompleteDirectionsHandler(map);
+    }
+    /**
+     * @constructor
+    */
+    function AutocompleteDirectionsHandler(map) {
+      this.map = map;
+      this.originPlaceId = null;
+      this.destinationPlaceId = null;
+      this.travelMode = 'WALKING';
+      var originInput = document.getElementById('origin-input');
+      var destinationInput = document.getElementById('destination-input');
+      var modeSelector = document.getElementById('mode-selector');
+      this.directionsService = new google.maps.DirectionsService;
+      this.directionsDisplay = new google.maps.DirectionsRenderer;
+      this.directionsDisplay.setMap(map);
+      var originAutocomplete = new google.maps.places.Autocomplete(
+        originInput, { placeIdOnly: true });
+      var destinationAutocomplete = new google.maps.places.Autocomplete(
+        destinationInput, { placeIdOnly: true });
+      this.setupClickListener('changemode-walking', 'WALKING');
+      this.setupClickListener('changemode-transit', 'TRANSIT');
+      this.setupClickListener('changemode-driving', 'DRIVING');
+      this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
+      this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
+      this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
+      this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(destinationInput);
+      this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(modeSelector);
+    }
+    // Sets a listener on a radio button to change the filter type on Places
+    // Autocomplete.
+    AutocompleteDirectionsHandler.prototype.setupClickListener = function (id, mode) {
+      var radioButton = document.getElementById(id);
+      var me = this;
+      radioButton.addEventListener('click', function () {
+        me.travelMode = mode;
+        me.route();
+      });
+    };
+    AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function (autocomplete, mode) {
+      var me = this;
+      autocomplete.bindTo('bounds', this.map);
+      autocomplete.addListener('place_changed', function () {
+        var place = autocomplete.getPlace();
+        if (!place.place_id) {
+          window.alert("Please select an option from the dropdown list.");
           return;
         }
-        var me = this;
-        this.directionsService.route({
-          origin: { 'placeId': this.originPlaceId },
-          destination: { 'placeId': this.destinationPlaceId },
-          travelMode: this.travelMode
-        }, function (response, status) {
-          if (status === 'OK') {
-            me.directionsDisplay.setDirections(response);
-          } else {
-            window.alert('Directions request failed due to ' + status);
-          }
-        });
-      };
-    </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD05drdGt8PJ_HeqPeupTCof649sOQpNiI&libraries=places&callback=initMap"></script>
+        if (mode === 'ORIG') {
+          me.originPlaceId = place.place_id;
+        } else {
+          me.destinationPlaceId = place.place_id;
+        }
+        me.route();
+      });
+    };
+    AutocompleteDirectionsHandler.prototype.route = function () {
+      if (!this.originPlaceId || !this.destinationPlaceId) {
+        return;
+      }
+      var me = this;
+      this.directionsService.route({
+        origin: { 'placeId': this.originPlaceId },
+        destination: { 'placeId': this.destinationPlaceId },
+        travelMode: this.travelMode
+      }, function (response, status) {
+        if (status === 'OK') {
+          me.directionsDisplay.setDirections(response);
+        } else {
+          window.alert('Directions request failed due to ' + status);
+        }
+      });
+    };
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD05drdGt8PJ_HeqPeupTCof649sOQpNiI&libraries=places&callback=initMap"></script>
+  <script src='https://www.gstatic.com/firebasejs/4.11.0/firebase.js'></script>
+  <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+  <script type='text/javascript' src='https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js'></script>
+  <script src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
+  <script src='https://cdn.datatables.net/rowreorder/1.2.3/js/dataTables.rowReorder.min.js'></script>
+  <script src='assets/javascript/logic.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.js'></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"></script>
+  <script async defer src="https://www.instagram.com/embed.js"></script>
 </body>
 
 </html>
