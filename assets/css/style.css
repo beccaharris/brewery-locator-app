@@ -1,4 +1,6 @@
-/* Foundation Styling */
+body {
+  background-image: url('../images/brushed_alu_dark.png')
+}
 
 /* Header styling */
 header {
@@ -21,7 +23,7 @@ header {
 }
 .search-label {
   text-align: center;
-  color: white;
+  color: #fff;
   font-weight: bold;
   margin-top: 12%;
   font-family: 'Helvetica Neue', sans-serif; 
@@ -37,7 +39,8 @@ header {
   border-radius: 4px !important
 }
 .input-group-field {
-  border: 2px solid #649ad8
+  border: 2px solid #649ad8;
+  background-color: #fff
 }
 #search-button {
   background-color: #649ad8;
@@ -47,7 +50,7 @@ header {
 .lower-nav {
   background-color: #470d0d;
   border-top: 6px groove #eee;
-  border-bottom: 6px groove #eee;
+  border-bottom: 6px solid rgb(172, 172, 172);
 }
 .fact {
   color: #fff;
@@ -64,7 +67,7 @@ header {
   width: 100%;
   margin: 0 auto;
   margin-bottom: 60px;
-  border: 6px solid #470d0d;
+  border: 5px solid #470d0d;
   border-radius: 6px
 }
 .controls {
@@ -85,7 +88,7 @@ header {
   font-weight: 300;
   padding: 0 11px 0 13px;
   text-overflow: ellipsis;
-  width: 300px;
+  width: 25%;
   margin-left: 20px;
 }
 #origin-input:focus,
@@ -97,4 +100,21 @@ header {
   background-color: grey;
   padding: 5px 11px 0px 11px;
   margin-left: 20px;
+  width: 25%
 }
+.card {
+  border-radius: 4px;
+  border: 5px solid #470d0d
+}
+/* Media Queries - for map only! */
+@media (max-width: 640px) { 
+  #mode-selector {
+    height: 100px;
+  }
+}
+@media (max-width: 768px) { 
+  #mode-selector {
+    height: 100px;
+  }
+}
+

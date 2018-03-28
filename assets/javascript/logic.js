@@ -123,7 +123,7 @@ $(document).ready(function() {
   // ================================================= //
   // ====================== FIREBASE ================= //
   // ================================================= //
-  
+
   var config = {
     apiKey: "AIzaSyDdqCYrEn0pxKLfqlxBy1YDaPJfJyT10ZQ",
     authDomain: "brewery-locator-app-619ab.firebaseapp.com",

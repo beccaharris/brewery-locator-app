@@ -50,30 +50,34 @@
     <div class='grid-x'>
       <div class='cell medium-12 small-12'>
         <!-- Begin BeerMapping results table -->
-        <table id='beer-table' class='highlight responsive-table'>
-          <thead>
-            <tr>
-              <th></th>
-              <th>Brewery Name</th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th>Street Address</th>
-              <th>City</th>
-              <th>State</th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- Call BeerMapping API and inject jQuery here -->
-          </tbody>
-        </table>
+        <div class="card">
+          <div class="card-section">
+            <table id='beer-table' class='highlight responsive-table'>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Brewery Name</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th>Street Address</th>
+                  <th>City</th>
+                  <th>State</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Call BeerMapping API and inject jQuery here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
       <!-- End BeerMapping results table, begin actual Google Map -->
       <div class='cell medium-12 small-12'>
@@ -97,66 +101,69 @@
       </div>
       <!-- End Google Map, begin comments section -->
       <div class='cell medium-12 small-12'>
-        <form data-abide novalidate>
-          <div data-abide-error class='alert callout' style='display: none'>
-            <p>
-              <i class='fi-alert'></i> There are some errors in your form.</p>
+        <div class="card">
+          <div class="card-section">
+            <!-- Comments form --> 
+            <form data-abide novalidate>
+              <div data-abide-error class='alert callout' style='display: none'>
+                <p>
+                  <i class='fi-alert'></i> There are some errors in your form.</p>
+              </div>
+              <div class='row'>
+                <div class='small-12 medium-12 columns'>
+                  <label>Name
+                    <input type='text' placeholder='Type Name' id='name' aria-describedby="exampleHelpText" required>
+                    <span class='form-error'>
+                      You should fill this field out...it's required.
+                    </span>
+                  </label>
+                  <p class='help-text' id='exampleHelpText'>Here's how you use this input field...</p>
+                </div>
+                <div class='small-12 medium-12 columns'>
+                  <label>Age
+                    <input type='text' placeholder='1234' id='age' min='21' aria-describedby="exampleHelpText" required pattern='number'>
+                    <span class='form-error'>
+                      You should fill this field out...it's required. Also, this number must be above 21!
+                    </span>
+                  </label>
+                  <p class='help-text' id='exampleHelpText'>Here's how you use this input field...</p>
+                </div>
+                <div class='small-12 medium-12 columns'>
+                  <label>Comment
+                    <textarea placeholder='Type your comment here!' id='comment' aria-describedby="exampleHelpText" required></textarea>
+                    <span class='form-error'>
+                      You should fill this field out...it's required.
+                    </span>
+                  </label>
+                  <p class='help-text' id='exampleHelpText'>Here's how you use this input field...</p>
+                </div>
+                <div class="row">
+                  <fieldset class="large-6 columns">
+                    <button class="button" id='submit' type="submit" value="Submit">Submit</button>
+                  </fieldset>
+                </div>
+              </div>
+            </form>
           </div>
-          <div class='row'>
-            <div class='small-12 medium-12 columns'>
-              <label>Name
-                <input type='text' placeholder='Type Name' id='name' aria-describedby="exampleHelpText" required>
-                <span class='form-error'>
-                  You should fill this field out...it's required.
-                </span>
-              </label>
-              <p class='help-text' id='exampleHelpText'>Here's how you use this input field...</p>
-            </div>
-            <div class='small-12 medium-12 columns'>
-              <label>Age
-                <input type='text' placeholder='1234' id='age' min='21' aria-describedby="exampleHelpText" required pattern='number'>
-                <span class='form-error'>
-                  You should fill this field out...it's required. Also, this number must be above 21!
-                </span>
-              </label>
-              <p class='help-text' id='exampleHelpText'>Here's how you use this input field...</p>
-            </div>
-            <div class='small-12 medium-12 columns'>
-              <label>Comment
-                <textarea placeholder='Type your comment here!' id='comment' aria-describedby="exampleHelpText" required></textarea>
-                <span class='form-error'>
-                  You should fill this field out...it's required.
-                </span>
-              </label>
-              <p class='help-text' id='exampleHelpText'>Here's how you use this input field...</p>
-            </div>
-            <div class="row">
-              <fieldset class="large-6 columns">
-                <div class="hidden">ERROR GOES HERE</div>
-                <button class="button" id='submit' type="submit" value="Submit">Submit</button>
-              </fieldset>
-            </div>
+          <div class='cell medium-12 small-12'>
+            <table id="input-comments">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>Comment</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-        </form>
-      </div>
-      <div class='cell medium-12 small-12'>
-        <table id="input-comments">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Age</th>
-              <th>Comment</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
-
+        </div>
       </div>
 
 
