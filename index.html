@@ -62,73 +62,6 @@
           </div>
         </div>
       </div>
-      <div class="cell medium-2 small-2"></div>
-      <div class='cell medium-8 small-8'>
-        <div id="accordion-div">
-          <div class="accordion-panel-title">Leave us a comment!</div>
-
-          <div class="accordion-panel-content">
-            <form data-abide novalidate>
-              <div data-abide-error class='alert callout' style='display: none'>
-                <p>
-                  <i class='fi-alert'></i> There are some errors in your form.</p>
-              </div>
-              <div class='row'>
-                <div class='small-12 medium-12 columns'>
-                  <label>Name
-                    <input type='text' placeholder='Type Name' id='name' aria-describedby="exampleHelpText" required>
-                    <span class='form-error'>
-                      You should fill this field out...it's required.
-                    </span>
-                  </label>
-                </div>
-                <div class='small-12 medium-12 columns'>
-                  <label>Age
-                    <input type='text' placeholder='1234' id='age' min='21' aria-describedby="exampleHelpText" required pattern='number'>
-                    <span class='form-error'>
-                      You should fill this field out...it's required. Also, this number must be above 21!
-                    </span>
-                  </label>
-                </div>
-                <div class='small-12 medium-12 columns'>
-                  <label>Comment
-                    <textarea placeholder='Type your comment here!' id='comment' aria-describedby="exampleHelpText" required></textarea>
-                    <span class='form-error'>
-                      You should fill this field out...it's required.
-                    </span>
-                  </label>
-                </div>
-                <div class="row">
-                  <fieldset class="large-6 columns">
-                    <button class="button" id='submit' type="submit" value="Submit">Submit</button>
-                  </fieldset>
-                </div>
-              </div>
-            </form>
-          </div>
-          <div class="accordion-panel-title">Check out what other people had to say</div>
-          <div class="accordion-panel-content">
-            <table id="input-comments">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Age</th>
-                  <th>Comment</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-      </div>
-      <div class="cell medium-2 small-2"></div>
     </div>
   </div>
 
@@ -172,7 +105,7 @@
         </div>
       </div>
       <div class='map'>
-        
+
       </div>
       <!-- End BeerMapping results table, begin actual Google Map -->
       <div class='cell'>
@@ -194,77 +127,71 @@
         <div id="map"></div>
 
       </div>
+    </div>
+  </div>
+  <div class="grid-x">
+    <div class="cell medium-2 small-2"></div>
+    <div class='cell medium-8 small-8'>
+      <div id="accordion-div">
+        <div class="accordion-panel-title">Leave us a comment!</div>
 
+        <div class="accordion-panel-content">
 
-      <!-- End Google Map, begin comments section -->
-      <div class="cell medium-2 small-2"></div>
-      <div class='cell medium-8 small-8'>
-        <div id="accordion-div">
-          <div class="accordion-panel-title">Leave us a comment!</div>
-
-          <div class="accordion-panel-content">
-            <form data-abide novalidate>
-              <div data-abide-error class='alert callout' style='display: none'>
-                <p>
-                  <i class='fi-alert'></i> There are some errors in your form.</p>
-              </div>
-              <div class='row'>
-                <div class='small-12 medium-12 columns'>
-                  <label>Name
-                    <input type='text' placeholder='Type Name' id='name' aria-describedby="exampleHelpText" required>
-                    <span class='form-error'>
-                      You should fill this field out...it's required.
-                    </span>
-                  </label>
-                </div>
-                <div class='small-12 medium-12 columns'>
-                  <label>Age
-                    <input type='text' placeholder='1234' id='age' min='21' aria-describedby="exampleHelpText" required pattern='number'>
-                    <span class='form-error'>
-                      You should fill this field out...it's required. Also, this number must be above 21!
-                    </span>
-                  </label>
-                </div>
-                <div class='small-12 medium-12 columns'>
-                  <label>Comment
-                    <textarea placeholder='Type your comment here!' id='comment' aria-describedby="exampleHelpText" required></textarea>
-                    <span class='form-error'>
-                      You should fill this field out...it's required.
-                    </span>
-                  </label>
-                </div>
-                <div class="row">
-                  <fieldset class="large-6 columns">
-                    <button class="button" id='submit' type="submit" value="Submit">Submit</button>
-                  </fieldset>
-                </div>
-              </div>
-            </form>
-          </div>
-          <div class="accordion-panel-title">Check out what other people had to say</div>
-          <div class="accordion-panel-content">
-            <table id="input-comments">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Age</th>
-                  <th>Comment</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
+          <div class='row'>
+            <div class='small-12 medium-12 columns'>
+              <label>Name
+                <input type='text' placeholder='Type Name' id='name' aria-describedby="exampleHelpText" required>
+                <span class='form-error'>
+                  You should fill this field out...it's required.
+                </span>
+              </label>
+            </div>
+            <div class='small-12 medium-12 columns'>
+              <label>Age
+                <input type='text' placeholder='1234' id='age' min='21' aria-describedby="exampleHelpText" required pattern='number'>
+                <span class='form-error'>
+                  You should fill this field out...it's required. Also, this number must be above 21!
+                </span>
+              </label>
+            </div>
+            <div class='small-12 medium-12 columns'>
+              <label>Comment
+                <textarea placeholder='Type your comment here!' id='comment' aria-describedby="exampleHelpText" required></textarea>
+                <span class='form-error'>
+                  You should fill this field out...it's required.
+                </span>
+              </label>
+            </div>
+            <div class="row">
+              <fieldset class="large-6 columns">
+                <button class="button" id='submit' type="submit" value="Submit">Submit</button>
+              </fieldset>
+            </div>
           </div>
         </div>
-
+        <div class="accordion-panel-title">Check out what other people had to say</div>
+        <div class="accordion-panel-content">
+          <table id="input-comments">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Comment</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-      <div class="cell medium-2 small-2"></div>
+
     </div>
+    <div class="cell medium-2 small-2"></div>
   </div>
   <div class="columns small-12" data-sticky-container>
     <div class="top-bar sticky" data-sticky data-stick-to="bottom" data-top-anchor="example3" data-btm-anchor="foo2:top">
