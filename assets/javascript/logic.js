@@ -202,7 +202,7 @@ $(document).ready(function () {
   // If age does not meet checkAge conditions, .blur run function checkAge
   $("#age").blur(function() {
     checkAge()});
-});
+
 
   // ================================================= //
   // ================== ACCORDION LOGIC ============== //
@@ -215,4 +215,5 @@ $(document).ready(function () {
     });
   } 
   accordion();
+
 }) 
