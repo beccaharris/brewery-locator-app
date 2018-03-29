@@ -165,16 +165,11 @@ $(document).ready(function () {
     var name = $("#name").val().trim();
     var age = $("#age").val().trim();
     var comment = $("#comment").val().trim();
-
-    $("#name").on("invalid.zf.abide", function (ev, el) {
-      alert("Input field foo is invalid");
-    });
     var newComment = {
       newName: name,
       newAge: age,
       newComment: comment
     };
-
 
     // Makes name, age, and comment into one object that gets pushed to firebase
     database.ref().push(newComment);
@@ -200,13 +195,20 @@ $(document).ready(function () {
   });
 
   // Function that disables submit button
+  
   function checkAge() {
     var age = $("#age").val().trim();
+    var name = $('#name').val().trim()
+    var comment =  $('#comment').val().trim();
+    $('#error').empty();
     if (age < 21 || age > 150) {
       $("#error").append("<b>Must be 21 or over or a reasonable age</b>");
       $('#submit').attr("disabled", true);
-    }
-    else {
+    } else if ((age >= 21) && (name == "")) {
+      $('#error').empty();
+      $("#error").append("<b>Your name is required!</b>");
+      $('#submit').attr("disabled", true);
+    } else {
       $("#error").empty();
       $('#submit').attr("disabled", false);
     }
@@ -214,8 +216,8 @@ $(document).ready(function () {
 
   // If age does not meet checkAge conditions, .blur run function checkAge
   $("#age").blur(function() {
-    checkAge()});
-
+    checkAge()
+  });
 
   // ================================================= //
   // ================== ACCORDION LOGIC ============== //

@@ -5,17 +5,20 @@
   <meta charset='UTF-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
   <meta http-equiv='X-UA-Compatible' content='ie=edge'>
-  <title>Brewery Locator</title>
+  <title>gitBEER</title>
   <link rel='icon' href='assets/images/favicon.ico' type='image/x-icon'>
+  <!-- Foundation CSS --> 
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css'>
+  <!-- DataTables CSS -->
   <link rel='stylesheet' href='https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css'>
   <link rel='stylesheet' href='https://cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css'>
+  <!-- Custom CSS --> 
   <link rel='stylesheet' type='text/css' href='assets/css/style.css'>
+  <!-- Google Fonts --> 
   <link href="https://fonts.googleapis.com/css?family=Cuprum|Chela+One" rel="stylesheet">
 </head>
 
 <body>
-
   <!-- Header (will load on landing and on search) -->
   <header>
     <div data-sticky-container>
@@ -34,7 +37,7 @@
         </div>
       </div>
     </div>
-    <h2 class="search-label">Enter a city here and find yourself some beer!</h2>
+    <h3 class="search-label">Enter a city here and find yourself some beer!</h3>
     <div class='input-group'>
       <input class='input-group-field' id='city-search' placeholder='Enter a city name here' type='text'>
       <div class='input-group-button'>
@@ -49,7 +52,6 @@
       </div>
     </div>
   </header>
-
   <!-- ============================================================================= -->
   <!-- This section is displayed until the FIND ME BEER button is clicked; once clicked, everything here is hidden except for the comments -->
   <!-- ============================================================================= -->
@@ -64,7 +66,6 @@
       </div>
     </div>
   </div>
-
   <!-- ============================================================================= -->
   <!-- This section is hidden until the FIND ME BEER button is clicked; once clicked will display table with results, google map, and comments section -->
   <!-- ============================================================================= -->
@@ -109,22 +110,10 @@
       </div>
       <!-- End BeerMapping results table, begin actual Google Map -->
       <div class='cell'>
-        <!--<input id="origin-input" class="controls" type="text" placeholder="Enter an origin location">
-        <br>
-        <input id="destination-input" class="controls" type="text" placeholder="Enter a destination location">
 
-        <div id="mode-selector" class="controls">
-          <input type="radio" name="type" id="changemode-walking" checked="checked">
-          <label for="changemode-walking">Walking</label>
-
-          <input type="radio" name="type" id="changemode-transit">
-          <label for="changemode-transit">Transit</label>
-
-          <input type="radio" name="type" id="changemode-driving">
-          <label for="changemode-driving">Driving</label>
-        </div> -->
-
-        <div id="map"></div>
+        <div id="map">
+          <!-- Google Maps API inject Map here -->
+        </div>
 
       </div>
     </div>
@@ -136,44 +125,39 @@
     <div class="cell medium-2 small-2"></div>
     <div class='cell medium-8 small-8'>
       <div id="accordion-div">
-        <div class="accordion-panel-title">Leave us a comment!</div>
+        <div class="accordion-panel-title">
+          <h4 class="actual-accordion-title">Leave us a comment</h4>
+          <span><p class="required">* Required Fields</p></span>
+        </div>
 
         <div class="accordion-panel-content">
 
           <div class='row'>
             <div class='small-12 medium-12 columns'>
-              <label>Name
-                <input type='text' placeholder='Type Name' id='name' aria-describedby="exampleHelpText" required>
-                <span class='form-error'>
-                  You should fill this field out...it's required.
-                </span>
+              <label>Name<span>*</span>
+                <input type='text'  id='name' required>
               </label>
             </div>
             <div class='small-12 medium-12 columns'>
-              <label>Age
+              <label>Age<span>*</span>
                 <input type='text' placeholder='1234' id='age' min='21' aria-describedby="exampleHelpText" required pattern='number'>
-                <span class='form-error'>
-                  You should fill this field out...it's required. Also, this number must be above 21!
-                </span>
               </label>
             </div>
             <div class='small-12 medium-12 columns'>
               <label>Comment
                 <textarea placeholder='Type your comment here!' id='comment' aria-describedby="exampleHelpText" required></textarea>
-                <span class='form-error'>
-                  You should fill this field out...it's required.
-                </span>
               </label>
             </div>
             <div class="row">
               <fieldset class="large-6 columns">
                 <div id="error"></div>
-                <button class="button" id='submit' type="submit" value="Submit">Submit</button>
+                <button class="button" id='submit' type="submit" value="Submit">Submit</button><span id="required"></span>
+
               </fieldset>
             </div>
           </div>
         </div>
-        <div class="accordion-panel-title">Check out what other people had to say</div>
+        <h5 class="accordion-panel-title panel-2">Check out what other people had to say</h5>
         <div class="accordion-panel-content">
           <table id="input-comments">
             <thead>
@@ -202,16 +186,22 @@
       <h5>Copyright 2018: Rocelia Cooper, Dane Jackins, Hermon Alem, Becca Harris</h5>
     </div>
   </div>
-
+  <!-- Google Maps API -->
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD05drdGt8PJ_HeqPeupTCof649sOQpNiI&libraries=places"></script>
+  <!-- Firebase --> 
   <script type="text/javascript" src='https://www.gstatic.com/firebasejs/4.11.0/firebase.js'></script>
+  <!-- jQuery -->
   <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+  <!-- DataTables --> 
   <script type='text/javascript' src='https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js'></script>
   <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
   <script type="text/javascript" src='https://cdn.datatables.net/rowreorder/1.2.3/js/dataTables.rowReorder.min.js'></script>
+  <!-- Custom JS files --> 
   <script type="text/javascript" src='assets/javascript/mapsAPI.js'></script>
   <script type="text/javascript" src='assets/javascript/logic.js'></script>
-  <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.js'></script>
+  <!-- Foundation CSS framework --> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/plugins/foundation.core.js"></script>  
+  <!-- FontAwesome --> 
   <script async defer type="text/javascript" src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"></script>
 </body>
 
