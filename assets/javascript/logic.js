@@ -1,3 +1,5 @@
+var addresses = [];
+
 $(document).ready(function () {
   
   $('.active-map-div').hide();
@@ -62,6 +64,13 @@ $(document).ready(function () {
       url: queryUrl,
       method: 'GET',
       success: function (obj, textstatus) {
+        for (var i = 0; i < obj.length; i++) {
+          var completeAddress = obj[i].street + ", " + obj[i].city + ", " + obj[i].state + " " + obj[i].zip;
+          addresses.push(completeAddress)
+        }
+      initMapFromAPIResults(addresses);
+        
+        // console.log(addresses)
         if ($.fn.DataTable.isDataTable("#beer-table")) {
           $('#beer-table').DataTable().clear().destroy();
         }
