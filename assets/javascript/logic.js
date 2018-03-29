@@ -1,9 +1,11 @@
 $(document).ready(function () {
   
   $('.active-map-div').hide();
+
   // =========================================================== //
   // ====================== BEER FACTS  ======================== //
   // =========================================================== //
+  
   var beerFacts = [
     { fact: 'At any given time, 0.7% of the world is drunk. So, 50 million people are drunk right now.' },
     { fact: "The world's longest hangover lasted 4 weeks after a Scotsman consumed 60 pints of beer." },
@@ -45,6 +47,7 @@ $(document).ready(function () {
   };
 
   factRotation(Math.floor(Math.random() * beerFacts.length));
+
   // =========================================================== //
   // ====================== BEERMAPPING API CALL================ //
   // =========================================================== //
