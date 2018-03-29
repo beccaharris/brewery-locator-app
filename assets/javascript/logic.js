@@ -162,6 +162,8 @@ $(document).ready(function () {
       newComment: comment
     };
 
+
+    // Makes name, age, and comment into one object that gets pushed to firebase
     database.ref().push(newComment);
 
     $("#name").val("");
@@ -169,27 +171,38 @@ $(document).ready(function () {
     $("#comment").val("");
   });
 
+  // Using child added so that you can add multipe names, ages, and comments without overwriting them
   database.ref().on("child_added", function (childSnapshot, prevChildKey) {
 
     var name = childSnapshot.val().newName;
     var age = childSnapshot.val().newAge;
     var comment = childSnapshot.val().newComment;
+
+
+    // Firebase watcher + initial loader HINT: .on("value")
+    database.ref().on("value", function (snapshot) {
+    });
+    // Make sure this is in the on.click but outside the database.ref or it will append twice
     $('#input-comments > tbody').append(`<tr><td>${name}</td><td>${age}</td><td>${comment}</td></tr>`)
   });
 
   // Function that disables submit button
   function checkAge() {
     var age = $("#age").val().trim();
-    if (age < 21 || age >= 150) {
+    if (age < 21 || age > 150) {
+      $("#error").append("<b>Must be 21 or over or a reasonable age</b>");
       $('#submit').attr("disabled", true);
-    } else {
+    }
+    else {
+      $("#error").empty();
       $('#submit').attr("disabled", false);
     }
   };
 
-  $("#age").blur(function () {
-    checkAge()
-  });
+  // If age does not meet checkAge conditions, .blur run function checkAge
+  $("#age").blur(function() {
+    checkAge()});
+});
 
   // ================================================= //
   // ================== ACCORDION LOGIC ============== //
@@ -203,4 +216,3 @@ $(document).ready(function () {
   } 
   accordion();
 }) 
-
