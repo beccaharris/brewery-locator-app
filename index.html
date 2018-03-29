@@ -171,9 +171,12 @@
           </div>
         </div>
       </div>
+      <div class='map'>
+        
+      </div>
       <!-- End BeerMapping results table, begin actual Google Map -->
       <div class='cell'>
-        <input id="origin-input" class="controls" type="text" placeholder="Enter an origin location">
+        <!--<input id="origin-input" class="controls" type="text" placeholder="Enter an origin location">
         <br>
         <input id="destination-input" class="controls" type="text" placeholder="Enter a destination location">
 
@@ -186,7 +189,7 @@
 
           <input type="radio" name="type" id="changemode-driving">
           <label for="changemode-driving">Driving</label>
-        </div>
+        </div> -->
 
         <div id="map"></div>
 
@@ -269,97 +272,14 @@
     </div>
   </div>
 
-  <script>
-    // This example requires the Places library. Include the libraries=places
-    // parameter when you first load the API. For example:
-    // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-    function initMap() {
-      var map = new google.maps.Map(document.getElementById('map'), {
-        mapTypeControl: false,
-        center: { lat: 39.742043, lng: -104.991531 },
-        zoom: 13
-      });
-      new AutocompleteDirectionsHandler(map);
-    }
-    /**
-     * @constructor
-    */
-    function AutocompleteDirectionsHandler(map) {
-      this.map = map;
-      this.originPlaceId = null;
-      this.destinationPlaceId = null;
-      this.travelMode = 'WALKING';
-      var originInput = document.getElementById('origin-input');
-      var destinationInput = document.getElementById('destination-input');
-      var modeSelector = document.getElementById('mode-selector');
-      this.directionsService = new google.maps.DirectionsService;
-      this.directionsDisplay = new google.maps.DirectionsRenderer;
-      this.directionsDisplay.setMap(map);
-      var originAutocomplete = new google.maps.places.Autocomplete(
-        originInput, { placeIdOnly: true });
-      var destinationAutocomplete = new google.maps.places.Autocomplete(
-        destinationInput, { placeIdOnly: true });
-      this.setupClickListener('changemode-walking', 'WALKING');
-      this.setupClickListener('changemode-transit', 'TRANSIT');
-      this.setupClickListener('changemode-driving', 'DRIVING');
-      this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
-      this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
-      this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
-      this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(destinationInput);
-      this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(modeSelector);
-    }
-    // Sets a listener on a radio button to change the filter type on Places
-    // Autocomplete.
-    AutocompleteDirectionsHandler.prototype.setupClickListener = function (id, mode) {
-      var radioButton = document.getElementById(id);
-      var me = this;
-      radioButton.addEventListener('click', function () {
-        me.travelMode = mode;
-        me.route();
-      });
-    };
-    AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function (autocomplete, mode) {
-      var me = this;
-      autocomplete.bindTo('bounds', this.map);
-      autocomplete.addListener('place_changed', function () {
-        var place = autocomplete.getPlace();
-        if (!place.place_id) {
-          window.alert("Please select an option from the dropdown list.");
-          return;
-        }
-        if (mode === 'ORIG') {
-          me.originPlaceId = place.place_id;
-        } else {
-          me.destinationPlaceId = place.place_id;
-        }
-        me.route();
-      });
-    };
-    AutocompleteDirectionsHandler.prototype.route = function () {
-      if (!this.originPlaceId || !this.destinationPlaceId) {
-        return;
-      }
-      var me = this;
-      this.directionsService.route({
-        origin: { 'placeId': this.originPlaceId },
-        destination: { 'placeId': this.destinationPlaceId },
-        travelMode: this.travelMode
-      }, function (response, status) {
-        if (status === 'OK') {
-          me.directionsDisplay.setDirections(response);
-        } else {
-          window.alert('Directions request failed due to ' + status);
-        }
-      });
-    };
-  </script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD05drdGt8PJ_HeqPeupTCof649sOQpNiI&libraries=places&callback=initMap"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD05drdGt8PJ_HeqPeupTCof649sOQpNiI&libraries=places"></script>
   <script src='https://www.gstatic.com/firebasejs/4.11.0/firebase.js'></script>
   <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
   <script type='text/javascript' src='https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js'></script>
   <script src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
   <script src='https://cdn.datatables.net/rowreorder/1.2.3/js/dataTables.rowReorder.min.js'></script>
   <script src='assets/javascript/logic.js'></script>
+  <script src='assets/javascript/mapsAPI.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.js'></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"></script>
   <script async defer src="https://www.instagram.com/embed.js"></script>

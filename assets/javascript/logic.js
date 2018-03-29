@@ -98,7 +98,8 @@ $(document).ready(function () {
             }, {
               "targets": [5],
               "visible": false
-            }, {
+            }
+            , {
               "targets": [9],
               "visible": false
             }, {
@@ -190,7 +191,7 @@ $(document).ready(function () {
   // ================================================= //
   // ================== ACCORDION LOGIC ============== //
   // ================================================= //
-  
+
   function accordion() {
     $('.accordion-panel-title').on('click',function() {
       $('.accordion-panel-content').slideUp('slow');
