@@ -1,4 +1,5 @@
 var addresses = [];
+var breweryNames = []
 
 $(document).ready(function () {
   
@@ -59,15 +60,18 @@ $(document).ready(function () {
     $('.inactive-map-div').hide();
     var userInput = $('#city-search').val().trim();
     $('#beer-table > tbody').empty();
-    var queryUrl = 'https://thingproxy.freeboard.io/fetch/http://beermapping.com/webservice/loccity/E3b1372b6db3c5e549e795a11ed77331/' + userInput + '&s=json'
+    var queryUrl = 'https://thingproxy.freeboard.io/fetch/http://beermapping.com/webservice/loccity/E3b1372b6db3c5e549e795a11ed77331/' + encodeURIComponent(userInput) + '&s=json'
     $.ajax({
       url: queryUrl,
       method: 'GET',
       success: function (obj, textstatus) {
+        console.log(queryUrl)
         for (var i = 0; i < obj.length; i++) {
           var completeAddress = obj[i].street + ", " + obj[i].city + ", " + obj[i].state + " " + obj[i].zip;
-          addresses.push(completeAddress)
-        }
+          addresses.push(completeAddress);
+          breweryNames.push(obj[i].name)
+        };
+
       initMapFromAPIResults(addresses);
         
         // console.log(addresses)
