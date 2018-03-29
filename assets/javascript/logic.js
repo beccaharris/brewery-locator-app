@@ -135,14 +135,14 @@ $(document).ready(function() {
     var age = $("#age").val().trim();
     var comment = $("#comment").val().trim();
 
-    var newComment = {
+    var newComments = {
       newName: name,
       newAge: age,
       newComment: comment
     };
 
     // Makes name, age, and comment into one object that gets pushed to firebase
-    database.ref().push(newComment);
+    database.ref().push(newComments);
 
     $("#name").val("");
     $("#age").val("");
@@ -158,10 +158,9 @@ $(document).ready(function() {
 
     // Firebase watcher + initial loader HINT: .on("value")
     database.ref().on("value", function (snapshot) {
-
-      $('#input-comments > tbody').append(`<tr><td>${name}</td><td>${age}</td><td>${comment}</td></tr>`)
-
     });
+    // Make sure this is in the on.click but outside the database.ref or it will append twice
+    $('#input-comments > tbody').append(`<tr><td>${name}</td><td>${age}</td><td>${comment}</td></tr>`)
   });
 
   // Function that disables submit button
