@@ -1,191 +1,287 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 
 <head>
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
   <title>Brewery Locator</title>
-  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-  <script src="assets/javascript/logic.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-
-
+  <link rel='icon' href='assets/images/favicon.ico' type='image/x-icon'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css'>
+  <link rel='stylesheet' href='https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css'>
+  <link rel='stylesheet' href='https://cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css'>
+  <link rel='stylesheet' type='text/css' href='assets/css/style.css'>
+  <link href="https://fonts.googleapis.com/css?family=Cuprum|Chela+One" rel="stylesheet">
 </head>
 
 <body>
 
+  <!-- Header (will load on landing and on search) -->
   <header>
-    <div class="navbar-fixed">
-      <nav>
-        <div class="nav-wrapper">
-          <a href="#!" class="brand-logo">Logo</a>
-          <ul class="right hide-on-med-and-down">
-            <li>
-              <a href="sass.html">Sass</a>
-            </li>
-            <li>
-              <a href="badges.html">Components</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </div>
-    </nav>
-    </div>
-    <div class="row">
-      <div class="col s12 m12" id="cheers">
-        <div class="card">
-          <div class="card-image">
-            <img src="assets/images/cheers.jpg" alt="A cheers to beers!">
-
-            <span class="card-title">
-
-              <div class="file-field input-field">
-                <a id="search-button" class="waves-effect waves-light btn">
-                  <i class="material-icons right">cloud</i>Submit</a>
-                <div class="file-path-wrapper">
-                  <input placeholder="Enter a city here!" id="city-search" type="text" class="validate">
-                </div>
-              </div>
-            </span>
-          </div>
-
-          <nav>
-            <div class="nav-wrapper">
-              <a href="#" class="brand-logo">Logo</a>
-              <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li>
-                  <a href="sass.html">Sass</a>
-                </li>
-                <li>
-                  <a href="badges.html">Components</a>
-                </li>
-                <li>
-                  <a href="collapsible.html">JavaScript</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-          <div class="card-content">
-            <div id="beer-facts">
-              <!-- Random beer facts -->
-            </div>
-          </div>
-  </header>
-  <div class='main'>
-
-    <div class='container'>
-
-      <div>
-        <table id='beer-table' class='highlight responsive-table'>
-          <thead>
-            <tr>
-              <th></th>
-              <th>Brewery Name</th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th>Street Address</th>
-              <th>City</th>
-              <th>State</th>
-              <th>Zip</th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- inject jQuery stuff -->
-          </tbody>
-        </table>
-        <br><br>
-
-        <!-- table for comment section  -->
-        <div class="row">
-          <form class="col s12">
-            <div class="row">
-
-              <div class="input-field col s3">
-                <input placeholder="Type Name" id="name" type="text" class="validate">
-                <label for="name">Enter Name</label>
-              </div>
-              <div class="input-field col s2">
-                <input placeholder="Age" id="age" type="number" max="150" min="21" class="validate">
-                <label for="age">Enter Age</label>
-              </div>
-              <div class="input-field col s7">
-                <input placeholder="Add Comment" id="comment" type="text" class="validate">
-                <label for="Comment">Comment</label>
-              </div>
-              <div id="submit" class="waves-effect waves-light btn">Submit</div>
-
-
-              <table id="input-comments" class="striped">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Comment</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-
-                </tbody>
-              </table>
-
-
-            </div>
-
+    <div data-sticky-container>
+      <div class='top-bar high-nav'>
+        <h1 class="app-title">beer.</h1>
+        <div class="icons">
+          <a class="icon-link" href="https://twitter.com/hashtag/beer?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Ehashtag" target="_blank">
+            <i class="fab fa-twitter-square fa-2x"></i>
+          </a>
+          <a class="icon-link" href="https://www.facebook.com/TheBEERBible.net/" target="_blank">
+            <i class="fab fa-facebook-f fa-2x"></i>
+          </a>
+          <a class="icon-link" href="https://www.instagram.com/explore/tags/beer/" target="_blank">
+            <i class="fab fa-instagram fa-2x"></i>
+          </a>
         </div>
       </div>
     </div>
-
-
-    <br>
-    <br>
-    <br>
-    <div id="map">
-
+    <h2 class="search-label">Enter a city here and find yourself some beer!</h2>
+    <div class='input-group'>
+      <input class='input-group-field' id='city-search' placeholder='Enter a city name here' type='text'>
+      <div class='input-group-button'>
+        <input type='submit' class='button' id='search-button' value='Find me beer!'>
+      </div>
     </div>
+    <div data-sticky-container>
+      <div class='top-bar lower-nav'>
+        <marquee id='beer-facts' scrollamount='8'>
+          <!-- Inject jQuery beer facts here -->
+        </marquee>
+      </div>
+    </div>
+  </header>
 
-    <script>
+  <!-- ============================================================================= -->
+  <!-- This section is displayed until the FIND ME BEER button is clicked; once clicked, everything here is hidden except for the comments -->
+  <!-- ============================================================================= -->
+  <div class="inactive-map-div">
+    <div class='grid-x'>
+      <div class='cell'>
+        <div class="card">
+          <div class="card-section">
+            <h5>Put some content in here for a landing page...</h5>
+          </div>
+        </div>
+      </div>
+      <div class="cell medium-2 small-2"></div>
+      <div class='cell medium-8 small-8'>
+        <div id="accordion-div">
+          <div class="accordion-panel-title">Leave us a comment!</div>
 
-      function initMap() {
-        var location = { lat: 39.742043, lng: -104.991531 };
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 10,
-          center: location
-        });
-        var marker = new google.maps.Marker({
-          position: location,
-          map: map
-        });
-      }
-    </script>
+          <div class="accordion-panel-content">
+            <form data-abide novalidate>
+              <div data-abide-error class='alert callout' style='display: none'>
+                <p>
+                  <i class='fi-alert'></i> There are some errors in your form.</p>
+              </div>
+              <div class='row'>
+                <div class='small-12 medium-12 columns'>
+                  <label>Name
+                    <input type='text' placeholder='Type Name' id='name' aria-describedby="exampleHelpText" required>
+                    <span class='form-error'>
+                      You should fill this field out...it's required.
+                    </span>
+                  </label>
+                </div>
+                <div class='small-12 medium-12 columns'>
+                  <label>Age
+                    <input type='text' placeholder='1234' id='age' min='21' aria-describedby="exampleHelpText" required pattern='number'>
+                    <span class='form-error'>
+                      You should fill this field out...it's required. Also, this number must be above 21!
+                    </span>
+                  </label>
+                </div>
+                <div class='small-12 medium-12 columns'>
+                  <label>Comment
+                    <textarea placeholder='Type your comment here!' id='comment' aria-describedby="exampleHelpText" required></textarea>
+                    <span class='form-error'>
+                      You should fill this field out...it's required.
+                    </span>
+                  </label>
+                </div>
+                <div class="row">
+                  <fieldset class="large-6 columns">
+                    <button class="button" id='submit' type="submit" value="Submit">Submit</button>
+                  </fieldset>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="accordion-panel-title">Check out what other people had to say</div>
+          <div class="accordion-panel-content">
+            <table id="input-comments">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>Comment</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+      <div class="cell medium-2 small-2"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================================= -->
+  <!-- This section is hidden until the FIND ME BEER button is clicked; once clicked will display table with results, google map, and comments section -->
+  <!-- ============================================================================= -->
+  <div class="active-map-div">
+    <div class='grid-x'>
+      <div class='cell'>
+        <!-- Begin BeerMapping results table -->
+        <div class="card">
+          <div class="card-divider">
+            <h2 class="search-results">your search results are in!</h2>
+          </div>
+          <div class="card-section">
+            <table style="width: 100%" id='beer-table' class='display compact'>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th style="width: 35%">Brewery Name</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th style="width: 35%">Street Address</th>
+                  <th style="width: 15%">City</th>
+                  <th style="width: 15%">State</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Call BeerMapping API and inject jQuery here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class='map'>
+        
+      </div>
+      <!-- End BeerMapping results table, begin actual Google Map -->
+      <div class='cell'>
+        <!--<input id="origin-input" class="controls" type="text" placeholder="Enter an origin location">
+        <br>
+        <input id="destination-input" class="controls" type="text" placeholder="Enter a destination location">
+
+        <div id="mode-selector" class="controls">
+          <input type="radio" name="type" id="changemode-walking" checked="checked">
+          <label for="changemode-walking">Walking</label>
+
+          <input type="radio" name="type" id="changemode-transit">
+          <label for="changemode-transit">Transit</label>
+
+          <input type="radio" name="type" id="changemode-driving">
+          <label for="changemode-driving">Driving</label>
+        </div> -->
+
+        <div id="map"></div>
+
+      </div>
 
 
-<script async defer src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD05drdGt8PJ_HeqPeupTCof649sOQpNiI&callback=initMap"></script>
+      <!-- End Google Map, begin comments section -->
+      <div class="cell medium-2 small-2"></div>
+      <div class='cell medium-8 small-8'>
+        <div id="accordion-div">
+          <div class="accordion-panel-title">Leave us a comment!</div>
 
+          <div class="accordion-panel-content">
+            <form data-abide novalidate>
+              <div data-abide-error class='alert callout' style='display: none'>
+                <p>
+                  <i class='fi-alert'></i> There are some errors in your form.</p>
+              </div>
+              <div class='row'>
+                <div class='small-12 medium-12 columns'>
+                  <label>Name
+                    <input type='text' placeholder='Type Name' id='name' aria-describedby="exampleHelpText" required>
+                    <span class='form-error'>
+                      You should fill this field out...it's required.
+                    </span>
+                  </label>
+                </div>
+                <div class='small-12 medium-12 columns'>
+                  <label>Age
+                    <input type='text' placeholder='1234' id='age' min='21' aria-describedby="exampleHelpText" required pattern='number'>
+                    <span class='form-error'>
+                      You should fill this field out...it's required. Also, this number must be above 21!
+                    </span>
+                  </label>
+                </div>
+                <div class='small-12 medium-12 columns'>
+                  <label>Comment
+                    <textarea placeholder='Type your comment here!' id='comment' aria-describedby="exampleHelpText" required></textarea>
+                    <span class='form-error'>
+                      You should fill this field out...it's required.
+                    </span>
+                  </label>
+                </div>
+                <div class="row">
+                  <fieldset class="large-6 columns">
+                    <button class="button" id='submit' type="submit" value="Submit">Submit</button>
+                  </fieldset>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="accordion-panel-title">Check out what other people had to say</div>
+          <div class="accordion-panel-content">
+            <table id="input-comments">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>Comment</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
 
+      </div>
+      <div class="cell medium-2 small-2"></div>
+    </div>
+  </div>
+  <div class="columns small-12" data-sticky-container>
+    <div class="top-bar sticky" data-sticky data-stick-to="bottom" data-top-anchor="example3" data-btm-anchor="foo2:top">
+      <h5>Copyright 2018: Rocelia Cooper, Dane Jackins, Hermon Alem, Becca Harris</h5>
+    </div>
+  </div>
 
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD05drdGt8PJ_HeqPeupTCof649sOQpNiI&libraries=places"></script>
+  <script type="text/javascript" src='https://www.gstatic.com/firebasejs/4.11.0/firebase.js'></script>
+  <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+  <script type='text/javascript' src='https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js'></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
+  <script type="text/javascript" src='https://cdn.datatables.net/rowreorder/1.2.3/js/dataTables.rowReorder.min.js'></script>
+  <script type="text/javascript" src='assets/javascript/logic.js'></script>
+  <script type="text/javascript" src='assets/javascript/mapsAPI.js'></script>
+  <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.js'></script>
+  <script async defer type="text/javascript" src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"></script>
 </body>
 
 </html>
