@@ -7,14 +7,14 @@
   <meta http-equiv='X-UA-Compatible' content='ie=edge'>
   <title>gitBEER</title>
   <link rel='icon' href='assets/images/favicon.ico' type='image/x-icon'>
-  <!-- Foundation CSS --> 
+  <!-- Foundation CSS -->
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css'>
   <!-- DataTables CSS -->
   <link rel='stylesheet' href='https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css'>
   <link rel='stylesheet' href='https://cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css'>
-  <!-- Custom CSS --> 
+  <!-- Custom CSS -->
   <link rel='stylesheet' type='text/css' href='assets/css/style.css'>
-  <!-- Google Fonts --> 
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Cuprum|Chela+One" rel="stylesheet">
 </head>
 
@@ -33,6 +33,9 @@
           </a>
           <a class="icon-link" href="https://www.instagram.com/explore/tags/beer/" target="_blank">
             <i class="fab fa-instagram fa-2x"></i>
+          </a>
+          <a class="icon-link" href="https://www.pinterest.com/search/pins/?q=beer&rs=typed&term_meta[]=beer%7Ctyped" target="_blank">
+            <i class="fab fa-pinterest fa-2x"></i>
           </a>
         </div>
       </div>
@@ -60,7 +63,20 @@
       <div class='cell'>
         <div class="card">
           <div class="card-section">
-            <h5>Put some content in here for a landing page...</h5>
+            <div id="scroll-div-1">
+              <div id="scroll-div-2">
+                <div id="scroll-div-3">
+                  <h3 class="fave-breweries">Our favorite Colorado Breweries...</h3>
+                  <ul id="brewery-picks">
+                      <!-- Inject brewery images here --> 
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div id="memes">
+              <h4>Obligatory beer meme...</h4>
+              <!-- append beer memes here -->
+            </div>
           </div>
         </div>
       </div>
@@ -106,15 +122,12 @@
         </div>
       </div>
       <div class='map'>
-
       </div>
       <!-- End BeerMapping results table, begin actual Google Map -->
       <div class='cell'>
-
         <div id="map">
           <!-- Google Maps API inject Map here -->
         </div>
-
       </div>
     </div>
   </div>
@@ -127,19 +140,21 @@
       <div id="accordion-div">
         <div class="accordion-panel-title">
           <h4 class="actual-accordion-title">Leave us a comment</h4>
-          <span><p class="required">* Required Fields</p></span>
+          <span>
+            <p class="required">* Required Fields</p>
+          </span>
         </div>
-
         <div class="accordion-panel-content">
-
           <div class='row'>
             <div class='small-12 medium-12 columns'>
-              <label>Name<span>*</span>
-                <input type='text'  id='name' required>
+              <label>Name
+                <span>*</span>
+                <input type='text' id='name' required>
               </label>
             </div>
             <div class='small-12 medium-12 columns'>
-              <label>Age<span>*</span>
+              <label>Age
+                <span>*</span>
                 <input type='text' placeholder='1234' id='age' min='21' aria-describedby="exampleHelpText" required pattern='number'>
               </label>
             </div>
@@ -151,8 +166,8 @@
             <div class="row">
               <fieldset class="large-6 columns">
                 <div id="error"></div>
-                <button class="button" id='submit' type="submit" value="Submit">Submit</button><span id="required"></span>
-
+                <button class="button" id='submit' type="submit" value="Submit">Submit</button>
+                <span id="required"></span>
               </fieldset>
             </div>
           </div>
@@ -177,31 +192,53 @@
           </table>
         </div>
       </div>
-
     </div>
     <div class="cell medium-2 small-2"></div>
   </div>
   <div class="columns small-12" data-sticky-container>
     <div class="top-bar sticky" data-sticky data-stick-to="bottom" data-top-anchor="example3" data-btm-anchor="foo2:top">
-      <h5>Copyright 2018: Rocelia Cooper, Dane Jackins, Hermon Alem, Becca Harris</h5>
+      <h5 class="footer-copyright">&copy; 2018 Crusher Coders</h5>
+      <span class="footer-fa-icon">
+        <i class="fas fa-beer fa-5x"></i>
+        <h3>gitBeer</h3>
+      </span>
+      <span class="footer-social-icons">
+        <div class="icons">
+          <a class="icon-link" href="https://twitter.com/hashtag/beer?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Ehashtag" target="_blank">
+            <i class="fab fa-twitter-square fa-2x"></i>
+          </a>
+          <a class="icon-link" href="https://www.facebook.com/TheBEERBible.net/" target="_blank">
+            <i class="fab fa-facebook-f fa-2x"></i>
+          </a>
+          <a class="icon-link" href="https://www.instagram.com/explore/tags/beer/" target="_blank">
+            <i class="fab fa-instagram fa-2x"></i>
+          </a>
+          <a class="icon-link" href="https://www.pinterest.com/search/pins/?q=beer&rs=typed&term_meta[]=beer%7Ctyped" target="_blank">
+            <i class="fab fa-pinterest fa-2x"></i>
+          </a>
+        </div>
+      </span>
     </div>
   </div>
+  </div>
+
   <!-- Google Maps API -->
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD05drdGt8PJ_HeqPeupTCof649sOQpNiI&libraries=places"></script>
-  <!-- Firebase --> 
+  <!-- Firebase -->
   <script type="text/javascript" src='https://www.gstatic.com/firebasejs/4.11.0/firebase.js'></script>
   <!-- jQuery -->
   <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-  <!-- DataTables --> 
+  <!-- DataTables -->
   <script type='text/javascript' src='https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js'></script>
   <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
   <script type="text/javascript" src='https://cdn.datatables.net/rowreorder/1.2.3/js/dataTables.rowReorder.min.js'></script>
-  <!-- Custom JS files --> 
+  <!-- Custom JS files -->
   <script type="text/javascript" src='assets/javascript/mapsAPI.js'></script>
   <script type="text/javascript" src='assets/javascript/logic.js'></script>
-  <!-- Foundation CSS framework --> 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/plugins/foundation.core.js"></script>  
-  <!-- FontAwesome --> 
+  <script type="text/javascript" src='assets/javascript/landingPage.js'></script>
+  <!-- Foundation CSS framework -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/plugins/foundation.core.js"></script>
+  <!-- FontAwesome -->
   <script async defer type="text/javascript" src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"></script>
 </body>
 

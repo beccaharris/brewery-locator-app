@@ -31,11 +31,11 @@ header {
 }
 .icons {
   margin-right: 10%;
-  width: 125px;
+  width: 205px;
 }
 .icon-link {
   color: white;
-  margin-right: 15%
+  margin-right: 7%
 }
 .search-label {
   text-align: center;
@@ -87,6 +87,52 @@ header {
 select {
   margin-bottom: 0
 }
+/* Landing Page */
+#memes {
+  float: right;
+  margin-top: 200px;
+  margin-right: 20px;
+}
+#beer-meme {
+  height: 400px;
+  margin-bottom: 30px;
+  border-radius: 4px;
+}
+.brewery-image {
+  height: 250px;
+}
+.fave-breweries {
+  margin-top: 20px;
+  text-align: center
+}
+#scroll-div-1 {
+  height: 400px;
+  margin-top: 20px;
+  margin-left: 20px;
+  border: 2px solid #cfcece;
+  border-radius: 4px;
+  width: 35%
+}
+#scroll-div-2 {
+  height: inherit; 
+  overflow: auto;
+  border-bottom: 2px solid #cfcece
+}
+#scroll-div-3{
+  height:1500px
+}
+
+ul {
+  list-style: none;
+  margin-left: 120px;
+}
+ul li:nth-child(3) {
+  margin-left: 20px;
+}
+ul li:nth-child(7) {
+  margin-left: -35px;
+}
+
 /* Map/Directions styling */
 #map {
   height: 400px;
@@ -158,6 +204,17 @@ select {
   color: white;
   border-top: 5px solid #fff;
   margin-top: 3%;
+  padding-top: 40px;
+  padding-bottom: 40px
+}
+.footer-copyright {
+  margin-left: 5%
+}
+.footer-fa-icon {
+  text-align: center;
+}
+.footer-social-icons {
+  margin-right: 5%
 }
 /* Media Queries - for map only! */
 @media (max-width: 640px) { 
