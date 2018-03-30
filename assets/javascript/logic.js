@@ -68,6 +68,12 @@ $(document).ready(function () {
           var completeAddress = obj[i].street + ", " + obj[i].city + ", " + obj[i].state + " " + obj[i].zip;
           addresses.push(completeAddress)
         }
+        console.log('obj', obj);
+        //console.log('textStatus', textStatus);
+        console.log('addresses', addresses);
+      if (addresses.length > 11) { // Google API only allows 11 pins on a map at once
+        addresses.length = 11;
+      }
       initMapFromAPIResults(addresses);
         
         // console.log(addresses)
