@@ -209,7 +209,7 @@ $(document).ready(function () {
     var comment =  $('#comment').val().trim();
     $('#error').empty();
     if (age < 21 || age > 150) {
-      $("#error").append("<b>Must be 21 or over or a reasonable age</b>");
+      $("#error").append("<b>Must be over 21!</b>");
       $('#submit').attr("disabled", true);
     } else if ((age >= 21) && (name == "")) {
       $('#error').empty();
