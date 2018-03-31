@@ -1,6 +1,6 @@
 <h1>gitBEER</h1>
 <p><strong>An app for when you're thirsty</strong><br><br>
-View this app with <a href="https://beccaharris.github.io/brewery-locator-app" target="_blank">GitHub Pages</a>.<br><br>
+View this app with <a target="_blank" href="https://beccaharris.github.io/brewery-locator-app">GitHub Pages</a>.<br><br>
 This app has a couple features:
   <ul>
     <li>Allow users to search breweries within any city in the world.</li>
@@ -16,20 +16,20 @@ This app has a couple features:
 <h2>Built With</h2>
 <ul>
   <li>HTML</li>
-  <li><a href="https://foundation.zurb.com/" target="_blank">Foundation CSS Framework</a></li>
-  <li><a href="https://jquery.com/" target="_blank">jQuery</a></li>
-  <li><a href="https://developers.google.com/maps/ target="_blank"">Google Maps API</a></li>
-  <li><a href="https://beermapping.com/api/" target="_blank">Beer Mapping API</a></li>
-  <li><a href="https://datatables.net/" target="_blank">DataTables</a></li>
-  <li><a href="https://fontawesome.com/" target="_blank">Font Awesome</a></li>
-  <li><a href="https://fonts.google.com/" target="_blank">Google Fonts</a></li>
-  <li><a href="https://firebase.google.com/" target="_blank">Firebase</a></li>
+  <li><a target="_blank" href="https://foundation.zurb.com/">Foundation CSS Framework</a></li>
+  <li><a target="_blank" href="https://jquery.com/">jQuery</a></li>
+  <li><a target="_blank" href="https://developers.google.com/maps/">Google Maps API</a></li>
+  <li><a target="_blank" href="https://beermapping.com/api/">Beer Mapping API</a></li>
+  <li><a target="_blank" href="https://datatables.net/">DataTables</a></li>
+  <li><a target="_blank" href="https://fontawesome.com/">Font Awesome</a></li>
+  <li><a target="_blank" href="https://fonts.google.com/">Google Fonts</a></li>
+  <li><a target="_blank" href="https://firebase.google.com/">Firebase</a></li>
 </ul>
 
 <h2>Authors</h2>
 <ul>
-  <li><strong>Becca Harris:</strong> <a href="https://github.com/beccaharris" target="_blank">Becca's Github</a></li>
-  <li><strong>Hermon Alem:</strong> <a href="https://github.com/hermonalem/" target="_blank">Becca's Github</a></li>
-  <li><strong>Rocelia Cooper:</strong> <a href="https://github.com/rocelia/" target="_blank">Becca's Github</a></li>
-  <li><strong>Dane Jackins:</strong> <a href="https://github.com/danejackins" target="_blank">Dane's Github</a></li>
+  <li><strong>Becca Harris:</strong> <a target="_blank" href="https://github.com/beccaharris">Becca's Github</a></li>
+  <li><strong>Hermon Alem:</strong> <a target="_blank" href="https://github.com/hermonalem/">Becca's Github</a></li>
+  <li><strong>Rocelia Cooper:</strong> <a target="_blank" href="https://github.com/rocelia/">Becca's Github</a></li>
+  <li><strong>Dane Jackins:</strong> <a target="_blank" href="https://github.com/danejackins">Dane's Github</a></li>
 </ul>
