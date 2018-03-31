@@ -19,10 +19,10 @@ header {
   background-color: #470d0d;
   border-bottom: 6px groove #eee;
 }
-.app-title {
+.app-title{
   color: #fff; 
   font-family: 'Helvetica Neue', sans-serif; 
-  font-size: 100px;
+  font-size: 70px;
   font-weight: bold; 
   letter-spacing: -1px; 
   line-height: 1; 
@@ -31,11 +31,11 @@ header {
 }
 .icons {
   margin-right: 10%;
-  width: 125px;
+  width: 205px;
 }
 .icon-link {
   color: white;
-  margin-right: 15%
+  margin-right: 7%
 }
 .search-label {
   text-align: center;
@@ -74,7 +74,54 @@ header {
   font-weight: bold;
   margin-bottom: 0;
   text-transform: lowercase;
-  font-size: 1.4em
+  font-size: 1.2em
+}
+
+/* Landing Page */
+.about-section {
+  margin-bottom: 40px;
+}
+.grid-x-1 {
+  border-bottom: 2px solid #200f0f;
+  margin: 0;
+}
+.about-title, .about-text {
+  font-family: 'Ubuntu', sans-serif;
+  color: #200f0f
+}
+.about-title {
+  font-weight: bold;
+}
+.grid-x-2 {
+  background-color: #fff;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 40px;
+  border-bottom: 2px solid #200f0f;
+
+}
+.fave-breweries {
+  font-family: 'Ubuntu', sans-serif;
+  text-align: center;
+  margin-top: 5%;
+  margin-left: 10%;
+  margin-bottom: 2%;
+  font-weight: bold;
+}
+.brewery-image {
+  height: 300px;
+}
+ul li {
+  display: inline-block;
+  margin-right: 10%;
+  text-align: center;
+  font-size: 26px;
+  font-family: 'Ubuntu', sans-serif;
+  margin-bottom: 20px;
+}
+ul {
+  list-style: none;
+  margin-left: 20%
 }
 /* Table stying */
 .search-results {
@@ -139,11 +186,18 @@ select {
 	padding: 10px;
 	color: #fff;;
 }	
+.actual-accordion-title, .panel-2  {
+  font-weight: bold;
+}
 .accordion-panel-content {
   border-radius:4px;
 	background-color: #efefef;
 	display: none;
 	padding: 10px;
+}
+#error {
+  margin-bottom: 5px;
+  color: red;
 }
 /* Footer Styling */
 .sticky {
@@ -151,8 +205,18 @@ select {
   color: white;
   border-top: 5px solid #fff;
   margin-top: 3%;
+  padding-top: 40px;
+  padding-bottom: 40px
 }
-
+.footer-copyright {
+  margin-left: 5%
+}
+.footer-fa-icon {
+  text-align: center;
+}
+.footer-social-icons {
+  margin-right: 5%
+}
 /* Media Queries - for map only! */
 @media (max-width: 640px) { 
   #mode-selector {
