@@ -1,6 +1,6 @@
 <h1>gitBEER</h1>
 <p><strong>An app for when you're thirsty</strong><br><br>
-View this app with <a href="beccaharris.github.io/brewery-locator-app" target="_blank">GitHub Pages</a>.<br><br>
+View this app with <a href="https://beccaharris.github.io/brewery-locator-app" target="_blank">GitHub Pages</a>.<br><br>
 This app has a couple features:
   <ul>
     <li>Allow users to search breweries within any city in the world.</li>
