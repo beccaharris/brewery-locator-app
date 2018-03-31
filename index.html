@@ -15,7 +15,7 @@
   <!-- Custom CSS -->
   <link rel='stylesheet' type='text/css' href='assets/css/style.css'>
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Cuprum|Chela+One" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 </head>
 
 <body>
@@ -23,7 +23,7 @@
   <header>
     <div data-sticky-container>
       <div class='top-bar high-nav'>
-        <h1 class="app-title">gitBEER</h1>
+        <a onClick="window.location.reload()" class="app-title"><h1 class="app-title">gitBEER</h1></a>
         <div class="icons">
           <a class="icon-link" href="https://twitter.com/hashtag/beer?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Ehashtag" target="_blank">
             <i class="fab fa-twitter-square fa-2x"></i>
@@ -59,27 +59,32 @@
   <!-- This section is displayed until the FIND ME BEER button is clicked; once clicked, everything here is hidden except for the comments -->
   <!-- ============================================================================= -->
   <div class="inactive-map-div">
-    <div class='grid-x'>
-      <div class='cell'>
-        <div class="card">
-          <div class="card-section">
-            <div id="scroll-div-1">
-              <div id="scroll-div-2">
-                <div id="scroll-div-3">
-                  <h3 class="fave-breweries">Our favorite Colorado Breweries...</h3>
-                  <ul id="brewery-picks">
-                      <!-- Inject brewery images here --> 
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div id="memes">
-              <h4>Obligatory beer meme...</h4>
-              <!-- append beer memes here -->
-            </div>
-          </div>
+    <div class='grid-x grid-x-1'>
+      <div class='cell small-2 medium-2'></div>
+      <div class="cell small-8 medium-8">
+        <div class="about-section">
+          <h1 class="about-title"> ABOUT gitBEER </h1>
+          <h3 class="about-text">Our goal in creating this app is a very simple one: we want to help you (and your friends) find beer near you,
+            no matter where you are. London? No problem. Denver? Easy. Sydney? Yup, we'll find you a brewery there, too.
+            <br>
+            <br> This app uses The Beer Mapping Project in combination with Google Maps to find you (and get you directions to,
+            if you want!) breweries in any city in the world.
+            <br>
+            <br>Leave us a comment and let us know what you think of us! Thanks for visiting our app, and happy brewery searching!
+          </h3>
         </div>
       </div>
+      <div class="cell small-2 medium-2"></div>
+    </div>
+    <div class="grid-x grid-x-2">
+      <div class="cell small-3 medium-3"></div>
+      <div class="cell small-6 medium-6">
+        <h1 class="fave-breweries">Our Favorite Breweries</h1>
+        <ul id="brewery-picks">
+          <!-- Inject brewery images here -->
+        </ul>
+      </div>
+      <div class="cell small-3 medium-3"></div>
     </div>
   </div>
   <!-- ============================================================================= -->
