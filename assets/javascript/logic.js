@@ -1,4 +1,5 @@
 var addresses = [];
+var breweryNames = []
 
 $(document).ready(function () {
   
@@ -59,15 +60,25 @@ $(document).ready(function () {
     $('.inactive-map-div').hide();
     var userInput = $('#city-search').val().trim();
     $('#beer-table > tbody').empty();
-    var queryUrl = 'https://thingproxy.freeboard.io/fetch/http://beermapping.com/webservice/loccity/E3b1372b6db3c5e549e795a11ed77331/' + userInput + '&s=json'
+    var queryUrl = 'https://thingproxy.freeboard.io/fetch/http://beermapping.com/webservice/loccity/E3b1372b6db3c5e549e795a11ed77331/' + encodeURIComponent(userInput) + '&s=json'
     $.ajax({
       url: queryUrl,
       method: 'GET',
       success: function (obj, textstatus) {
+        console.log(queryUrl)
         for (var i = 0; i < obj.length; i++) {
           var completeAddress = obj[i].street + ", " + obj[i].city + ", " + obj[i].state + " " + obj[i].zip;
+
           addresses.push(completeAddress)
+          breweryNames.push(obj[i].name)
+
         }
+        console.log('obj', obj);
+        //console.log('textStatus', textStatus);
+        console.log('addresses', addresses);
+      if (addresses.length > 11) { // Google API only allows 11 pins on a map at once
+        addresses.length = 11;
+      }
       initMapFromAPIResults(addresses);
         
         // console.log(addresses)
@@ -161,16 +172,11 @@ $(document).ready(function () {
     var name = $("#name").val().trim();
     var age = $("#age").val().trim();
     var comment = $("#comment").val().trim();
-
-    $("#name").on("invalid.zf.abide", function (ev, el) {
-      alert("Input field foo is invalid");
-    });
     var newComment = {
       newName: name,
       newAge: age,
       newComment: comment
     };
-
 
     // Makes name, age, and comment into one object that gets pushed to firebase
     database.ref().push(newComment);
@@ -196,13 +202,20 @@ $(document).ready(function () {
   });
 
   // Function that disables submit button
+  
   function checkAge() {
     var age = $("#age").val().trim();
+    var name = $('#name').val().trim()
+    var comment =  $('#comment').val().trim();
+    $('#error').empty();
     if (age < 21 || age > 150) {
       $("#error").append("<b>Must be 21 or over or a reasonable age</b>");
       $('#submit').attr("disabled", true);
-    }
-    else {
+    } else if ((age >= 21) && (name == "")) {
+      $('#error').empty();
+      $("#error").append("<b>Your name is required!</b>");
+      $('#submit').attr("disabled", true);
+    } else {
       $("#error").empty();
       $('#submit').attr("disabled", false);
     }
@@ -210,8 +223,8 @@ $(document).ready(function () {
 
   // If age does not meet checkAge conditions, .blur run function checkAge
   $("#age").blur(function() {
-    checkAge()});
-
+    checkAge()
+  });
 
   // ================================================= //
   // ================== ACCORDION LOGIC ============== //
