@@ -2,9 +2,8 @@ var addresses = [];
 var breweryNames = []
 
 $(document).ready(function () {
-  
-  $('.active-map-div').hide();
 
+  $('.active-map-div').hide();
   // =========================================================== //
   // ====================== BEER FACTS  ======================== //
   // =========================================================== //
@@ -30,8 +29,8 @@ $(document).ready(function () {
     { fact: "J.K. Rowling invented Quidditch in a pub." }
   ];
 
-  var fact = beerFacts[Math.floor(Math.random() * beerFacts.length)].fact
-  $('#beer-facts').append("<p class='fact'>" + fact)
+  var fact = beerFacts[Math.floor(Math.random() * beerFacts.length)].fact;
+  $('#beer-facts').append("<p class='fact'>" + fact);
 
   function factRotation(i) {
     if (i < beerFacts.length) {
@@ -60,18 +59,16 @@ $(document).ready(function () {
     $('.inactive-map-div').hide();
     var userInput = $('#city-search').val().trim();
     $('#beer-table > tbody').empty();
-    var queryUrl = 'https://thingproxy.freeboard.io/fetch/http://beermapping.com/webservice/loccity/E3b1372b6db3c5e549e795a11ed77331/' + encodeURIComponent(userInput) + '&s=json'
+    var queryUrl = 'https://thingproxy.freeboard.io/fetch/http://beermapping.com/webservice/loccity/E3b1372b6db3c5e549e795a11ed77331/' + encodeURIComponent(userInput) + '&s=json';
     $.ajax({
       url: queryUrl,
       method: 'GET',
       success: function (obj, textstatus) {
-        console.log(queryUrl)
+        console.log(queryUrl);
         for (var i = 0; i < obj.length; i++) {
           var completeAddress = obj[i].street + ", " + obj[i].city + ", " + obj[i].state + " " + obj[i].zip;
-
-          addresses.push(completeAddress)
-          breweryNames.push(obj[i].name)
-
+          addresses.push(completeAddress);
+          breweryNames.push(obj[i].name);
         }
         console.log('obj', obj);
         //console.log('textStatus', textStatus);
@@ -223,7 +220,7 @@ $(document).ready(function () {
 
   // If age does not meet checkAge conditions, .blur run function checkAge
   $("#age").blur(function() {
-    checkAge()
+    checkAge();
   });
 
   // ================================================= //

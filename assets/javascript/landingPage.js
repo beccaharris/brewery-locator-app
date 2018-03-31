@@ -20,24 +20,24 @@ var breweries = [
     breweryCityState: 'Denver, CO',
     breweryImg: '<img class="brewery-image" src="assets/images/breweries/ratiobeerworks.png">',
   }
-]
+];
 
 $(document).ready(function () {
 
   for (var i = 0; i < breweries.length; i++) {
-    var eachBreweryImage = breweries[i].breweryImg
-    var eachBreweryName = breweries[i].breweryName
-    var eachBreweryUrl = breweries[i].breweryUrl
-    var newLink = $('<a>')
-    newLink.attr('href', breweries[i].breweryUrl)
+    var eachBreweryImage = breweries[i].breweryImg;
+    var eachBreweryName = breweries[i].breweryName;
+    var eachBreweryUrl = breweries[i].breweryUrl;
+    var newLink = $('<a>');
+    newLink.attr('href', breweries[i].breweryUrl);
     
-    var eachBreweryCitySt = breweries[i].breweryCityState
+    var eachBreweryCitySt = breweries[i].breweryCityState;
 
-    newListItemImg = $('<li>')
+    newListItemImg = $('<li>');
     
     $(newListItemImg).append(eachBreweryImage + '<br><a target="_blank" href="' + eachBreweryUrl + '">'  + eachBreweryName + '</a><br><p>' + eachBreweryCitySt);
     //$(newColumnImg).append(breweryNames[i])
-    $('#brewery-picks').append(newListItemImg)
+    $('#brewery-picks').append(newListItemImg);
 
   }
 }) 

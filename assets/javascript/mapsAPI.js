@@ -16,9 +16,9 @@ function initMapFromAPIResults(addressArray) {
           });
         } else {
           alert('Geocode was not successful for the following reason: ' + status);
-        }
-      }) 
-    }
+        };
+      }); 
+    };
     for (var i = 0; i < addressArray.length; i++) {
       var contentString = '<div id="content">' +
         '<h5 id="breweryName">' + breweryNames[i] + '</h5>' +
@@ -37,7 +37,7 @@ function initMapFromAPIResults(addressArray) {
       center: { lat: -34.397, lng: 150.644 },
       zoom: 13
     });
-  }
+  };
   
   function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.setPosition(pos);
