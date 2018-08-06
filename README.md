@@ -1,6 +1,6 @@
 <h1>gitBEER</h1>
 <p><strong>An app for when you're thirsty</strong><br><br>
-View this app with <a href="https://beccaharris.github.io/brewery-locator-app">GitHub Pages</a>.<br><br>
+View this app with <a href="https://beccakostyo.github.io/brewery-locator-app">GitHub Pages</a>.<br><br>
 This app has a couple features:
   <ul>
     <li>Allow users to search breweries within any city in the world.</li>
@@ -28,8 +28,8 @@ This app has a couple features:
 
 <h2>Authors</h2>
 <ul>
-  <li><strong>Becca Harris:</strong> <a href="https://github.com/beccaharris">Becca's Github</a></li>
-  <li><strong>Hermon Alem:</strong> <a href="https://github.com/hermonalem/">Becca's Github</a></li>
-  <li><strong>Rocelia Cooper:</strong> <a href="https://github.com/rocelia/">Becca's Github</a></li>
+  <li><strong>Becca Harris:</strong> <a href="https://github.com/beccakostyo">Becca's Github</a></li>
+  <li><strong>Hermon Alem:</strong> <a href="https://github.com/hermonalem/">Hermon's Github</a></li>
+  <li><strong>Rocelia Cooper:</strong> <a href="https://github.com/rocelia/">Rocelia's Github</a></li>
   <li><strong>Dane Jackins:</strong> <a href="https://github.com/danejackins">Dane's Github</a></li>
 </ul>
