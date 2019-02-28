@@ -118,8 +118,7 @@ $(document).ready(function () {
             }, {
               "targets": [5],
               "visible": false
-            }
-            , {
+            }, {
               "targets": [9],
               "visible": false
             }, {
@@ -127,9 +126,6 @@ $(document).ready(function () {
               "visible": false
             }, {
               "targets": [11],
-              "visible": false
-            }, {
-              "targets": [12],
               "visible": false
             }, {
               "targets": [13],
