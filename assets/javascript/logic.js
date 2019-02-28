@@ -59,7 +59,7 @@ $(document).ready(function () {
     $('.inactive-map-div').hide();
     var userInput = $('#city-search').val().trim();
     $('#beer-table > tbody').empty();
-    var queryUrl = 'https://thingproxy.freeboard.io/fetch/http://beermapping.com/webservice/loccity/E3b1372b6db3c5e549e795a11ed77331/' + encodeURIComponent(userInput) + '&s=json';
+    var queryUrl = 'http://beermapping.com/webservice/loccity/29aa6dd8c77d1a080cac8a238e4bc5a5/' + encodeURIComponent(userInput) + '&s=json';
     $.ajax({
       url: queryUrl,
       method: 'GET',
@@ -76,7 +76,7 @@ $(document).ready(function () {
       if (addresses.length > 11) { // Google API only allows 11 pins on a map at once
         addresses.length = 11;
       }
-      initMapFromAPIResults(addresses);
+      // initMapFromAPIResults(addresses);
         
         // console.log(addresses)
         if ($.fn.DataTable.isDataTable("#beer-table")) {
